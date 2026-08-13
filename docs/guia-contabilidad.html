@@ -1,0 +1,850 @@
+<meta charset="utf-8">
+<title>Contabilidad desde cero — para entender y explicar SIGA</title>
+<style>
+  :root {
+    --ground: #F5F8F4;
+    --surface: #FFFFFF;
+    --surface-2: #EDF2EC;
+    --ink: #14211A;
+    --ink-soft: #46554D;
+    --ink-faint: #6B7B72;
+    --rule: #DCE4DA;
+    --rule-soft: #E9EFE8;
+    --verde: #1F6B3E;
+    --verde-soft: #E4F0E8;
+    --ocre: #9C6410;
+    --ocre-soft: #F6EEDF;
+    --azul: #1D5C86;
+    --azul-soft: #E2EDF4;
+    --critico: #A8231B;
+    --critico-soft: #FBE9E7;
+    --shadow: 0 1px 2px rgba(20,33,26,.05), 0 4px 16px rgba(20,33,26,.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #090E0B; --surface: #111A14; --surface-2: #16211A;
+      --ink: #E4EDE7; --ink-soft: #A3B5AA; --ink-faint: #7E9186;
+      --rule: #1F2C24; --rule-soft: #18231C;
+      --verde: #58B57D; --verde-soft: #12261A;
+      --ocre: #D2A24F; --ocre-soft: #241D0F;
+      --azul: #6BAAD6; --azul-soft: #101E28;
+      --critico: #EF8177; --critico-soft: #2A1512;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 4px 16px rgba(0,0,0,.25);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #090E0B; --surface: #111A14; --surface-2: #16211A;
+    --ink: #E4EDE7; --ink-soft: #A3B5AA; --ink-faint: #7E9186;
+    --rule: #1F2C24; --rule-soft: #18231C;
+    --verde: #58B57D; --verde-soft: #12261A;
+    --ocre: #D2A24F; --ocre-soft: #241D0F;
+    --azul: #6BAAD6; --azul-soft: #101E28;
+    --critico: #EF8177; --critico-soft: #2A1512;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 4px 16px rgba(0,0,0,.25);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 17px; line-height: 1.72; -webkit-font-smoothing: antialiased;
+  }
+  .mono, code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 22px 110px; }
+
+  header.top { padding: 52px 0 26px; border-bottom: 2px solid var(--ink); margin-bottom: 44px; }
+  .eyebrow { font-family: ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--verde); font-weight: 600; margin: 0 0 14px; }
+  h1 { margin: 0; font-size: clamp(29px, 5.4vw, 44px); line-height: 1.08; letter-spacing: -.03em;
+    font-weight: 700; text-wrap: balance; }
+  .sub { margin: 16px 0 0; font-size: 18px; color: var(--ink-soft); }
+
+  section { margin: 0 0 56px; scroll-margin-top: 20px; }
+  h2 { margin: 0 0 8px; font-size: clamp(22px, 3.4vw, 29px); letter-spacing: -.024em; line-height: 1.2;
+    font-weight: 700; text-wrap: balance; display: flex; align-items: baseline; gap: 13px; }
+  h2 .n { font-family: ui-monospace, Menlo, monospace; font-size: 13px; font-weight: 600;
+    color: var(--verde); flex: none; letter-spacing: 0; }
+  h3 { margin: 32px 0 8px; font-size: 18px; font-weight: 700; letter-spacing: -.01em; }
+  p { margin: 0 0 16px; }
+  strong { font-weight: 650; }
+  em { font-style: italic; color: var(--ink-soft); }
+
+  .intro { font-size: 18.5px; color: var(--ink-soft); margin-bottom: 26px; }
+
+  ul.l { margin: 0 0 18px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  ul.l li { display: flex; gap: 12px; }
+  ul.l li::before { content: ""; flex: none; width: 5px; height: 5px; border-radius: 1px;
+    background: var(--verde); margin-top: 12px; }
+
+  /* Ecuación fundamental */
+  .ecuacion { display: flex; flex-wrap: wrap; align-items: stretch; gap: 10px; margin: 24px 0 26px; }
+  .ec-box { flex: 1 1 150px; border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px;
+    background: var(--surface); box-shadow: var(--shadow); }
+  .ec-box .t { font-size: 11px; letter-spacing: .13em; text-transform: uppercase; font-weight: 700;
+    color: var(--ink-faint); margin: 0 0 5px; }
+  .ec-box .d { font-size: 14.5px; color: var(--ink-soft); line-height: 1.45; margin: 0; }
+  .ec-op { display: grid; place-items: center; font-size: 24px; font-weight: 300; color: var(--ink-faint); padding: 0 2px; }
+
+  /* Cuenta T */
+  .cuentaT { border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; background: var(--surface);
+    margin: 0 0 18px; box-shadow: var(--shadow); }
+  .cuentaT > .nom { padding: 9px 14px; background: var(--surface-2); border-bottom: 1px solid var(--rule);
+    font-size: 13px; font-weight: 700; }
+  .cuentaT .cols { display: grid; grid-template-columns: 1fr 1fr; }
+  .cuentaT .col { padding: 0; }
+  .cuentaT .col:first-child { border-right: 1px solid var(--rule); }
+  .cuentaT .cab { padding: 6px 14px; font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+    font-weight: 700; color: var(--ink-faint); border-bottom: 1px solid var(--rule-soft); }
+  .cuentaT .mov { padding: 8px 14px; font-size: 13.5px; display: flex; justify-content: space-between; gap: 10px;
+    border-bottom: 1px solid var(--rule-soft); }
+  .cuentaT .mov:last-child { border-bottom: none; }
+  .cuentaT .mov span:last-child { font-family: ui-monospace, Menlo, monospace; font-variant-numeric: tabular-nums;
+    white-space: nowrap; }
+  .cuentaT .vacio { padding: 8px 14px; font-size: 13px; color: var(--ink-faint); font-style: italic; }
+
+  /* Tablas */
+  .tw { overflow-x: auto; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface);
+    margin: 0 0 20px; box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead th { text-align: left; padding: 10px 14px; background: var(--surface-2);
+    border-bottom: 1px solid var(--rule); font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 700; white-space: nowrap; }
+  tbody td { padding: 10px 14px; border-bottom: 1px solid var(--rule-soft); vertical-align: top; line-height: 1.5; }
+  tbody tr:last-child td { border-bottom: none; }
+  td.num, th.num { text-align: right; font-family: ui-monospace, Menlo, monospace;
+    font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tfoot td { padding: 10px 14px; border-top: 1px solid var(--rule); background: var(--surface-2); font-weight: 650; }
+
+  /* Cajas */
+  .caja { border: 1px solid var(--rule); border-left: 3px solid var(--verde); background: var(--surface);
+    border-radius: 6px; padding: 16px 20px; margin: 0 0 22px; }
+  .caja.ocre { border-left-color: var(--ocre); }
+  .caja.azul { border-left-color: var(--azul); }
+  .caja.rojo { border-left-color: var(--critico); }
+  .caja .t { display: block; font-weight: 700; margin-bottom: 6px; font-size: 15px; }
+  .caja p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+  .caja p + p { margin-top: 10px; }
+
+  .ejemplo { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px;
+    overflow: hidden; margin: 0 0 24px; box-shadow: var(--shadow); }
+  .ejemplo > header { padding: 11px 18px; background: var(--verde-soft); border-bottom: 1px solid var(--rule);
+    font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--verde); }
+  .ejemplo > .body { padding: 18px 20px 6px; }
+  .ejemplo > .body > *:last-child { margin-bottom: 14px; }
+
+  .pill { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 700;
+    letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+  .p-deb { background: var(--azul-soft); color: var(--azul); }
+  .p-hab { background: var(--ocre-soft); color: var(--ocre); }
+  .p-ok { background: var(--verde-soft); color: var(--verde); }
+
+  .frase { font-size: 20px; line-height: 1.5; font-weight: 650; color: var(--ink);
+    border-left: 3px solid var(--ocre); padding: 4px 0 4px 20px; margin: 22px 0; text-wrap: balance; }
+
+  .indice { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 22px;
+    margin: 0 0 44px; }
+  .indice p { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint);
+    font-weight: 700; margin: 0 0 10px; }
+  .indice ol { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .indice a { display: flex; gap: 11px; color: var(--ink-soft); text-decoration: none; font-size: 15px;
+    transition: color .15s; }
+  .indice a:hover { color: var(--verde); }
+  .indice a .n { font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: var(--ink-faint);
+    padding-top: 2px; flex: none; }
+
+  footer.fin { border-top: 2px solid var(--ink); padding-top: 20px; margin-top: 40px;
+    font-size: 14px; color: var(--ink-faint); }
+
+  :focus-visible { outline: 2px solid var(--verde); outline-offset: 3px; border-radius: 3px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+
+  <header class="top">
+    <p class="eyebrow">Guía de estudio · para entender y poder explicar</p>
+    <h1>Contabilidad desde cero, con los números de El Bosque</h1>
+    <p class="sub">
+      Sin conocimientos previos. Cada concepto se explica con un ejemplo real del sistema que
+      construimos, para que puedas presentarlo y responder preguntas con seguridad.
+    </p>
+  </header>
+
+  <nav class="indice">
+    <p>Qué vamos a ver</p>
+    <ol>
+      <li><a href="#a1"><span class="n">1</span> Para qué existe la contabilidad</a></li>
+      <li><a href="#a2"><span class="n">2</span> Activo, Pasivo y Patrimonio</a></li>
+      <li><a href="#a3"><span class="n">3</span> Ingresos, Costos y el resultado</a></li>
+      <li><a href="#a4"><span class="n">4</span> Debe y Haber: la partida doble</a></li>
+      <li><a href="#a5"><span class="n">5</span> El recorrido de los libros</a></li>
+      <li><a href="#a6"><span class="n">6</span> Por qué el sistema tiene dos planes de cuentas</a></li>
+      <li><a href="#a7"><span class="n">7</span> El asiento de sueldos, línea por línea</a></li>
+      <li><a href="#a8"><span class="n">8</span> Comprar no es gastar: petróleo e insumos</a></li>
+      <li><a href="#a9"><span class="n">9</span> El vocabulario del negocio</a></li>
+      <li><a href="#a10"><span class="n">10</span> Qué decir en la reunión</a></li>
+    </ol>
+  </nav>
+
+  <!-- ═════════ 1 ═════════ -->
+  <section id="a1">
+    <h2><span class="n">01</span> Para qué existe la contabilidad</h2>
+    <p class="intro">
+      Toda la contabilidad existe para responder dos preguntas. Nada más. Si entiendes esto,
+      el resto es detalle.
+    </p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>La pregunta</th><th>El informe que la responde</th><th>Qué tipo de foto es</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>¿Qué tengo y qué debo?</strong></td>
+            <td><strong>Balance General</strong></td>
+            <td>Una foto de un instante: al 31 de diciembre, así estaba la empresa</td>
+          </tr>
+          <tr>
+            <td><strong>¿Cómo me fue?</strong></td>
+            <td><strong>Estado de Resultados</strong></td>
+            <td>Una película de un período: durante todo el año, esto entró y esto salió</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      Piénsalo con tu propia vida. Si alguien te pregunta <em>«¿cómo estás económicamente?»</em>,
+      hay dos respuestas posibles y son distintas:
+    </p>
+    <ul class="l">
+      <li>«Tengo el auto pagado, la casa con dividendo y $500.000 en la cuenta» → eso es un <strong>Balance</strong>.</li>
+      <li>«Este mes gané $900.000 y gasté $700.000» → eso es un <strong>Estado de Resultados</strong>.</li>
+    </ul>
+    <p>
+      Las dos son verdad y las dos importan. Una te dice <strong>en qué situación estás</strong>; la otra,
+      <strong>si lo estás haciendo bien o mal</strong>.
+    </p>
+
+    <div class="caja">
+      <span class="t">Por qué esto importa en El Bosque</span>
+      <p>
+        Hoy la empresa no tiene ninguna de las dos respuestas completas, porque los cuatro campos
+        están cargados en Nubox como empresas separadas. No existe un balance ni un estado de
+        resultados de Agrícola El Bosque como unidad. Eso es exactamente lo que el sistema arregla.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═════════ 2 ═════════ -->
+  <section id="a2">
+    <h2><span class="n">02</span> Activo, Pasivo y Patrimonio</h2>
+    <p class="intro">
+      Estas tres palabras arman el Balance. Son las que más asustan y las más simples.
+    </p>
+
+    <div class="ecuacion">
+      <div class="ec-box">
+        <p class="t">Activo</p>
+        <p class="d">Lo que la empresa <strong>tiene</strong> o le <strong>deben</strong>.</p>
+      </div>
+      <div class="ec-op">=</div>
+      <div class="ec-box">
+        <p class="t">Pasivo</p>
+        <p class="d">Lo que la empresa <strong>debe</strong> a terceros.</p>
+      </div>
+      <div class="ec-op">+</div>
+      <div class="ec-box">
+        <p class="t">Patrimonio</p>
+        <p class="d">Lo que queda para <strong>los dueños</strong>.</p>
+      </div>
+    </div>
+
+    <p>
+      Esta igualdad <strong>siempre se cumple</strong>. No es una regla que alguien inventó: es aritmética.
+      Todo lo que la empresa tiene salió de algún lado, y sólo hay dos lados posibles: se lo prestaron
+      (pasivo) o lo pusieron los dueños y lo que la empresa ha ganado (patrimonio).
+    </p>
+
+    <div class="ejemplo">
+      <header>Ejemplo con una casa</header>
+      <div class="body">
+        <p>Compras una casa de $100 millones. Pagas $40 al contado y pides $60 al banco.</p>
+        <div class="tw">
+          <table>
+            <tbody>
+              <tr><td><strong>Activo</strong> — la casa, que es tuya</td><td class="num">$100.000.000</td></tr>
+              <tr><td><strong>Pasivo</strong> — la deuda con el banco</td><td class="num">$60.000.000</td></tr>
+              <tr><td><strong>Patrimonio</strong> — lo que realmente es tuyo</td><td class="num">$40.000.000</td></tr>
+            </tbody>
+            <tfoot><tr><td>100 = 60 + 40 &nbsp;·&nbsp; la ecuación se cumple</td><td class="num">✓</td></tr></tfoot>
+          </table>
+        </div>
+        <p>
+          Si pagas $10 millones del crédito: el activo sigue en $100 (la casa vale lo mismo), el pasivo
+          baja a $50, y tu patrimonio sube a $50. <strong>Ganaste patrimonio sin comprar nada nuevo.</strong>
+        </p>
+      </div>
+    </div>
+
+    <h3>En Agrícola El Bosque</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Grupo</th><th>Ejemplos reales del plan de cuentas</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Activo</strong><br><span style="font-size:13px;color:var(--ink-faint)">Cuentas 1.x</span></td>
+            <td>Caja · Banco · Clientes por cobrar · Inventario de petróleo y agroquímicos ·
+                Tractores y camionetas · Plantaciones · IVA crédito fiscal ·
+                <strong>Anticipos de sueldo</strong> (la empresa adelantó plata, el trabajador se la debe)</td>
+          </tr>
+          <tr>
+            <td><strong>Pasivo</strong><br><span style="font-size:13px;color:var(--ink-faint)">Cuentas 2.x</span></td>
+            <td>Proveedores · <strong>Remuneraciones por pagar</strong> · Leyes sociales por pagar ·
+                Impuestos por pagar · IVA débito fiscal · Préstamos bancarios</td>
+          </tr>
+          <tr>
+            <td><strong>Patrimonio</strong><br><span style="font-size:13px;color:var(--ink-faint)">Cuentas 3.x</span></td>
+            <td>Capital social · Resultados acumulados · Utilidad del ejercicio</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="caja azul">
+      <span class="t">El detalle que confunde a todo el mundo</span>
+      <p>
+        <strong>Los anticipos de sueldo son un activo, no un gasto.</strong> Cuando le adelantas $100.000
+        a un trabajador, no gastaste ese dinero: ahora él te lo debe. Es un derecho de cobro, igual que
+        un cliente que te debe. El gasto ocurre después, cuando se devenga el sueldo del mes.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═════════ 3 ═════════ -->
+  <section id="a3">
+    <h2><span class="n">03</span> Ingresos, Costos y el resultado</h2>
+    <p class="intro">
+      El Balance mide lo acumulado desde que la empresa existe. El Estado de Resultados mide
+      sólo lo que pasó en un período.
+    </p>
+
+    <ul class="l">
+      <li><strong>Ingresos</strong> (cuentas 4.x): lo que entra por vender. En El Bosque: venta de fruta, servicios agrícolas, arriendos.</li>
+      <li><strong>Costos y gastos</strong> (cuentas 5.x): lo que se consume para lograrlo. Sueldos, petróleo, agroquímicos, honorarios, seguros.</li>
+    </ul>
+
+    <p class="frase">Ingresos − Costos = Resultado. Si es positivo, utilidad. Si es negativo, pérdida.</p>
+
+    <p>
+      Y aquí está la conexión entre los dos informes: <strong>el resultado del período se suma al
+      patrimonio</strong>. Si la empresa gana, los dueños valen más. Si pierde, valen menos. Por eso los
+      dos informes no son mundos separados: el Estado de Resultados explica <em>por qué</em> cambió el
+      patrimonio del Balance.
+    </p>
+
+    <div class="caja ocre">
+      <span class="t">Costo o gasto: ¿cuál es la diferencia?</span>
+      <p>
+        <strong>Costo</strong> es lo que se consume para producir: la mano de obra que podó, el petróleo
+        del tractor, el fungicida que se aplicó. <strong>Gasto</strong> es lo que se consume para que la
+        empresa funcione: honorarios del contador, seguros, patentes.
+      </p>
+      <p>
+        En la práctica se usan casi como sinónimos y ambos van en las cuentas 5.x. La distinción importa
+        cuando quieres saber <em>cuánto cuesta producir un kilo de durazno</em>, que es justamente lo
+        que el sistema permite calcular.
+      </p>
+    </div>
+
+    <h3>Por qué el Estado de Resultados de la demo da pérdida</h3>
+    <p>
+      Si abres el sistema en el período de demostración vas a ver una pérdida grande. No es un error:
+      es lo normal a mitad de temporada. <strong>El costo se acumula durante meses antes de la
+      cosecha</strong> —poda, riego, aplicaciones— y el ingreso llega de golpe cuando se vende la fruta.
+      Un agrícola siempre se ve «en pérdida» antes de cosechar.
+    </p>
+  </section>
+
+  <!-- ═════════ 4 ═════════ -->
+  <section id="a4">
+    <h2><span class="n">04</span> Debe y Haber: la partida doble</h2>
+    <p class="intro">
+      Ésta es la parte que parece magia negra y no lo es. Se entiende en cinco minutos.
+    </p>
+
+    <p>
+      La idea de fondo: <strong>la plata no aparece ni desaparece</strong>. Cada movimiento tiene un
+      origen y un destino. Si entró plata a la caja, salió de alguna parte. Si compraste fertilizante,
+      o lo pagaste o quedaste debiéndolo.
+    </p>
+    <p>
+      Por eso cada movimiento se anota <strong>dos veces</strong>: una en la columna <span class="pill p-deb">Debe</span>
+      y otra en la columna <span class="pill p-hab">Haber</span>. Y el total de una columna
+      <strong>siempre</strong> tiene que ser igual al de la otra.
+    </p>
+
+    <div class="caja rojo">
+      <span class="t">Olvida lo que suenan las palabras</span>
+      <p>
+        «Debe» no significa que alguien deba algo. «Haber» no significa que haya algo. Son sólo los
+        nombres de la columna izquierda y la columna derecha, heredados del italiano del siglo XV.
+        Si les buscas lógica al nombre, te vas a confundir. <strong>Debe = izquierda. Haber = derecha.</strong>
+      </p>
+    </div>
+
+    <h3>La única regla que hay que memorizar</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Tipo de cuenta</th><th>Aumenta por</th><th>Disminuye por</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Activo</strong> — lo que tengo</td><td><span class="pill p-deb">Debe</span></td><td><span class="pill p-hab">Haber</span></td></tr>
+          <tr><td><strong>Costo / Gasto</strong> — lo que consumo</td><td><span class="pill p-deb">Debe</span></td><td><span class="pill p-hab">Haber</span></td></tr>
+          <tr><td><strong>Pasivo</strong> — lo que debo</td><td><span class="pill p-hab">Haber</span></td><td><span class="pill p-deb">Debe</span></td></tr>
+          <tr><td><strong>Patrimonio</strong> — lo de los dueños</td><td><span class="pill p-hab">Haber</span></td><td><span class="pill p-deb">Debe</span></td></tr>
+          <tr><td><strong>Ingreso</strong> — lo que vendo</td><td><span class="pill p-hab">Haber</span></td><td><span class="pill p-deb">Debe</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="frase">Activos y Gastos crecen por la izquierda. Todo lo demás crece por la derecha.</p>
+
+    <h3>Cómo se dibuja una cuenta</h3>
+    <p>
+      A cada cuenta se le dibuja una «T»: el nombre arriba, el Debe a la izquierda y el Haber a la
+      derecha. Así se ve la cuenta Banco después de recibir un pago de cliente y pagar sueldos:
+    </p>
+
+    <div class="cuentaT">
+      <div class="nom">1.2 &nbsp;Banco &nbsp;<span style="font-weight:400;color:var(--ink-faint);font-size:12px">— es un Activo, crece por el Debe</span></div>
+      <div class="cols">
+        <div class="col">
+          <div class="cab">Debe · entra</div>
+          <div class="mov"><span>Saldo inicial</span><span>180.000.000</span></div>
+          <div class="mov"><span>Cobro a cliente</span><span>114.835.000</span></div>
+        </div>
+        <div class="col">
+          <div class="cab">Haber · sale</div>
+          <div class="mov"><span>Pago de anticipos</span><span>1.672.000</span></div>
+          <div class="mov"><span>Pago de remuneraciones</span><span>40.761.000</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      El <strong>saldo</strong> de la cuenta es la resta: 294.835.000 menos 42.433.000 = <strong>252.402.000</strong>
+      que quedan en el banco. Como es un activo y quedó saldo por el lado del Debe, se dice que tiene
+      <em>saldo deudor</em>. Eso es todo lo que significa esa palabra.
+    </p>
+
+    <div class="ejemplo">
+      <header>Ejemplo completo: comprar fertilizante a crédito</header>
+      <div class="body">
+        <p>La empresa compra $14.200.000 de fertilizante y queda debiéndoselo al proveedor. Hay IVA del 19%.</p>
+        <div class="tw">
+          <table>
+            <thead><tr><th>Cuenta</th><th>Qué pasó</th><th class="num">Debe</th><th class="num">Haber</th></tr></thead>
+            <tbody>
+              <tr><td><strong>1.5</strong> Inventarios</td><td>Entró fertilizante a bodega: el activo sube</td><td class="num">14.200.000</td><td class="num"></td></tr>
+              <tr><td><strong>1.6</strong> IVA crédito fiscal</td><td>Ese IVA se lo puedo descontar al SII: también es un activo</td><td class="num">2.698.000</td><td class="num"></td></tr>
+              <tr><td><strong>2.1</strong> Proveedores</td><td>Ahora le debo esa plata al proveedor: el pasivo sube</td><td class="num"></td><td class="num">16.898.000</td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="2">Totales iguales — el asiento cuadra</td><td class="num">16.898.000</td><td class="num">16.898.000</td></tr></tfoot>
+          </table>
+        </div>
+        <p>
+          Fíjate que <strong>todavía no hay ningún gasto</strong>. Comprar no es gastar: cambiaste una cosa
+          (deuda) por otra (mercadería en bodega). El gasto aparece cuando el fertilizante se aplique al
+          cuartel. Volvemos a esto en la sección 8.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ 5 ═════════ -->
+  <section id="a5">
+    <h2><span class="n">05</span> El recorrido de los libros</h2>
+    <p class="intro">
+      Los cinco informes del módulo de Contabilidad no son cinco cosas distintas: son la misma
+      información peinada de cinco maneras.
+    </p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Paso</th><th>Qué es</th><th>Para qué sirve</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Libro Diario</strong></td>
+            <td>Todos los movimientos en orden de fecha, cada uno con su Debe y su Haber</td>
+            <td>Es el <strong>único lugar donde se escribe</strong>. Todo lo demás se calcula solo</td>
+          </tr>
+          <tr>
+            <td><strong>2. Control de asientos</strong></td>
+            <td>Revisa que en cada asiento el Debe sea igual al Haber</td>
+            <td>Si uno no cuadra, todos los informes salen mal. Se revisa antes de seguir</td>
+          </tr>
+          <tr>
+            <td><strong>3. Libro Mayor</strong></td>
+            <td>Lo mismo del diario, pero agrupado por cuenta y con saldo acumulado</td>
+            <td>Responder «¿cuánto tengo en el banco?» o «¿cuánto le debo a proveedores?»</td>
+          </tr>
+          <tr>
+            <td><strong>4. Balance de 8 columnas</strong></td>
+            <td>Una hoja de trabajo que ordena todas las cuentas y las separa en dos grupos</td>
+            <td>Es el paso intermedio donde se ve si todo cuadra antes de emitir los informes</td>
+          </tr>
+          <tr>
+            <td><strong>5a. Estado de Resultados</strong></td>
+            <td>Sólo las cuentas 4.x y 5.x</td>
+            <td>¿Cómo me fue?</td>
+          </tr>
+          <tr>
+            <td><strong>5b. Balance General</strong></td>
+            <td>Sólo las cuentas 1.x, 2.x y 3.x</td>
+            <td>¿Qué tengo y qué debo?</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Por qué se llama «de 8 columnas»</h3>
+    <p>
+      Porque tiene cuatro pares de columnas, y cada par es un Debe y un Haber:
+    </p>
+    <ul class="l">
+      <li><strong>Sumas</strong> — todo lo que pasó por cada cuenta, sin restar.</li>
+      <li><strong>Saldos</strong> — la resta: con cuánto quedó cada cuenta.</li>
+      <li><strong>Inventario</strong> — los saldos de las cuentas que van al Balance (1.x, 2.x, 3.x).</li>
+      <li><strong>Resultados</strong> — los saldos de las cuentas que van al Estado de Resultados (4.x, 5.x).</li>
+    </ul>
+    <p>
+      Es literalmente un clasificador: toma cada cuenta y la manda al informe que le corresponde.
+      Cuando el sistema dice <em>«Activo + Pérdidas = Pasivo + Ganancias»</em>, está comprobando que
+      esa clasificación no perdió ni inventó ningún peso.
+    </p>
+
+    <div class="caja">
+      <span class="t">La gran diferencia con el Excel actual</span>
+      <p>
+        En la planilla, esos cinco informes son hojas llenas de fórmulas encadenadas. Su propio
+        instructivo advierte: <em>«eliminar filas con fórmulas rompe el sistema»</em>. En SIGA no hay
+        fórmulas que romper — los cinco informes se vuelven a calcular desde el Libro Diario cada vez
+        que se abren.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═════════ 6 ═════════ -->
+  <section id="a6">
+    <h2><span class="n">06</span> Por qué el sistema tiene dos planes de cuentas</h2>
+    <p class="intro">
+      Ésta es la idea central de todo el sistema. Si en la reunión explicas bien esto, explicaste
+      el proyecto.
+    </p>
+
+    <p>
+      Un <strong>plan de cuentas</strong> es simplemente la lista de cajones donde se puede guardar cada
+      peso. El sistema tiene dos listas al mismo tiempo, y no es un error ni una duplicación:
+      responden a dos preguntas distintas.
+    </p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th></th><th>Plan financiero</th><th>Plan analítico</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Códigos</strong></td><td class="mono">1.1 · 2.4 · 5.1 …</td><td class="mono">N1 a N13</td></tr>
+          <tr><td><strong>Cuántas cuentas</strong></td><td>46</td><td>141</td></tr>
+          <tr><td><strong>Para quién</strong></td><td>El contador y el SII</td><td>Gerencia y los campos</td></tr>
+          <tr><td><strong>Responde</strong></td><td>¿Cuánto gastó la empresa en sueldos?</td><td>¿Cuánto costó podar el cuartel DZ23 de duraznos en Buin?</td></tr>
+          <tr><td><strong>Manda en</strong></td><td>Balance y Estado de Resultados</td><td>Costo por hectárea, por labor, por variedad</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="caja azul">
+      <span class="t">La analogía de la boleta del supermercado</span>
+      <p>
+        Cuando vas al supermercado, la boleta trae un total: $85.000. Eso es lo que necesita tu
+        presupuesto — el <strong>plan financiero</strong>.
+      </p>
+      <p>
+        Pero si quieres saber si estás gastando mucho en carne o si los lácteos se dispararon,
+        necesitas el detalle línea por línea — el <strong>plan analítico</strong>.
+      </p>
+      <p>
+        Es el mismo dinero. Nadie gastó $85.000 dos veces. Sólo está mirado con distinto nivel de
+        acercamiento.
+      </p>
+    </div>
+
+    <h3>Los 13 niveles, en castellano</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Niveles</th><th>Qué guardan</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">N1–N4</td><td>La cuenta contable de toda la vida</td><td>COSTOS › OPERACIONAL › DIRECTOS › MANO DE OBRA</td></tr>
+          <tr><td class="mono">N5</td><td>Un detalle más de esa cuenta</td><td>MANO DE OBRA AGRÍCOLA</td></tr>
+          <tr><td class="mono">N6–N7</td><td>Qué labor se estaba haciendo</td><td>PODA › PINTAR CORTES</td></tr>
+          <tr><td class="mono">N8–N12</td><td>Sobre qué planta y dónde</td><td>Planta adulta · Duraznos · Andross · Buin · 2026-2027</td></tr>
+          <tr><td class="mono">N13</td><td>El cuartel exacto</td><td>DZ23</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      Así, una sola línea del Libro Diario dice al mismo tiempo <em>«esto es costo de ventas»</em>
+      —para el contador— y <em>«esto fue podar duraznos Andross en el cuartel DZ23 de Buin»</em>
+      —para gerencia.
+    </p>
+
+    <p class="frase">
+      Ése es todo el truco del sistema: un solo registro sirve a los dos mundos, y por eso dejan
+      de ser dos fuentes de información que nadie concilia.
+    </p>
+  </section>
+
+  <!-- ═════════ 7 ═════════ -->
+  <section id="a7">
+    <h2><span class="n">07</span> El asiento de sueldos, línea por línea</h2>
+    <p class="intro">
+      Este asiento es el corazón del sistema. Vamos a desarmarlo entero, con las cifras reales de
+      Buin en julio.
+    </p>
+
+    <p>
+      Cuando en <strong>Costos y cierre</strong> aprietas «Contabilizar», el sistema genera esto:
+    </p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Cuenta</th><th>Qué significa</th><th class="num">Debe</th><th class="num">Haber</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>5.1</strong> Costo de ventas<br><span style="font-size:12px;color:var(--ink-faint)">muchas líneas, una por cuartel y labor</span></td>
+            <td>El trabajo del mes se consumió: es costo. Sube por el Debe</td>
+            <td class="num">18.051.250</td><td class="num"></td>
+          </tr>
+          <tr>
+            <td><strong>2.7</strong> Leyes sociales por pagar</td>
+            <td>Lo que se le retuvo al trabajador para AFP y salud, y todavía no se paga. Es una deuda</td>
+            <td class="num"></td><td class="num">parte</td>
+          </tr>
+          <tr>
+            <td><strong>2.5</strong> Impuestos por pagar</td>
+            <td>El impuesto único retenido, que hay que enterar al SII. Otra deuda</td>
+            <td class="num"></td><td class="num">parte</td>
+          </tr>
+          <tr>
+            <td><strong>1.71</strong> Anticipos de sueldos</td>
+            <td>El anticipo que ya se había pagado deja de ser un derecho de cobro. El activo baja</td>
+            <td class="num"></td><td class="num">parte</td>
+          </tr>
+          <tr>
+            <td><strong>2.4</strong> Remuneraciones por pagar</td>
+            <td>El líquido que queda por transferir a los trabajadores. Deuda hasta que se paga</td>
+            <td class="num"></td><td class="num">el resto</td>
+          </tr>
+        </tbody>
+        <tfoot><tr><td colspan="2">Debe = Haber</td><td class="num">18.051.250</td><td class="num">18.051.250</td></tr></tfoot>
+      </table>
+    </div>
+
+    <h3>Cómo leerlo en una frase</h3>
+    <p class="frase">
+      La empresa consumió $18 millones de trabajo, y a cambio quedó debiendo esa misma plata
+      repartida entre las AFP, el SII, los trabajadores, y cancelando los anticipos que ya había entregado.
+    </p>
+
+    <h3>Las tres cosas que más se preguntan</h3>
+
+    <div class="caja">
+      <span class="t">¿Por qué los anticipos van al Haber si no son una deuda?</span>
+      <p>
+        Porque las cuentas de activo <strong>bajan</strong> por el Haber. El anticipo era un derecho de
+        cobro contra el trabajador; al descontarlo de su liquidación ese derecho se extingue. No es una
+        deuda nueva: es un activo que desaparece.
+      </p>
+    </div>
+
+    <div class="caja ocre">
+      <span class="t">¿Por qué el líquido se calcula por diferencia?</span>
+      <p>
+        Porque así el asiento <strong>no puede descuadrar nunca</strong>. Se toma el costo total, se restan
+        las leyes sociales, el impuesto y los anticipos, y lo que sobra es el líquido. Por construcción,
+        el Haber siempre va a igualar al Debe.
+      </p>
+    </div>
+
+    <div class="caja azul">
+      <span class="t">¿De dónde sale el monto del costo?</span>
+      <p>
+        Del libro de remuneraciones que devuelve el contador: <strong>total haber menos asignación
+        familiar</strong>. Ése es el número que cuadra con contabilidad, y es exactamente el criterio que
+        se usó al cuadrar junio 2026 a mano.
+      </p>
+      <p>
+        Ese total se reparte entre los cuarteles en proporción a las jornadas trabajadas. Por eso una
+        misma persona puede aparecer en cinco líneas distintas: trabajó en cinco cuarteles.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═════════ 8 ═════════ -->
+  <section id="a8">
+    <h2><span class="n">08</span> Comprar no es gastar: petróleo e insumos</h2>
+    <p class="intro">
+      Éste es el concepto que explica por qué el sistema separa la compra del consumo, y por qué
+      eso es correcto.
+    </p>
+
+    <p>
+      Cuando compras 700 litros de petróleo, <strong>no gastaste</strong>: cambiaste plata por petróleo.
+      El petróleo está ahí, en el estanque, y vale lo que costó. Es un <strong>activo</strong>.
+    </p>
+    <p>
+      El gasto ocurre cuando el tractor lo quema podando el cuartel DZ23. Recién ahí ese petróleo
+      dejó de existir como cosa y se convirtió en <strong>costo de la poda de ese cuartel</strong>.
+    </p>
+
+    <div class="ejemplo">
+      <header>Los dos momentos, con los asientos que genera el sistema</header>
+      <div class="body">
+        <p><strong>Momento 1 — la compra.</strong> Entra petróleo a la bodega y queda una deuda.</p>
+        <div class="tw">
+          <table>
+            <thead><tr><th>Cuenta</th><th class="num">Debe</th><th class="num">Haber</th></tr></thead>
+            <tbody>
+              <tr><td>1.5 Inventarios <em>— activo sube</em></td><td class="num">530.000</td><td class="num"></td></tr>
+              <tr><td>1.6 IVA crédito fiscal <em>— activo sube</em></td><td class="num">100.700</td><td class="num"></td></tr>
+              <tr><td>2.1 Proveedores <em>— pasivo sube</em></td><td class="num"></td><td class="num">630.700</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Momento 2 — el consumo.</strong> Se usó en los cuarteles: sale del inventario y se hace costo.</p>
+        <div class="tw">
+          <table>
+            <thead><tr><th>Cuenta</th><th class="num">Debe</th><th class="num">Haber</th></tr></thead>
+            <tbody>
+              <tr><td>5.1 Costo de ventas <em>— con su cuartel, labor y especie</em></td><td class="num">530.000</td><td class="num"></td></tr>
+              <tr><td>1.5 Inventarios <em>— activo baja</em></td><td class="num"></td><td class="num">530.000</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Por eso el estanque tiene valor mientras el combustible no se usa, y por eso el costo por
+          hectárea sale correcto: sólo carga lo que efectivamente se quemó en ese cuartel.
+        </p>
+      </div>
+    </div>
+
+    <div class="caja rojo">
+      <span class="t">Lo mismo aplica a los agroquímicos, y ahí está el hallazgo</span>
+      <p>
+        En el Excel, la aplicación de un fungicida y la salida del producto de bodega eran
+        <strong>dos registros separados</strong>. Por eso el stock nunca cuadraba: se aplicaba el producto
+        pero nadie descontaba la bodega.
+      </p>
+      <p>
+        En SIGA, registrar la aplicación <strong>descuenta el producto automáticamente</strong>. Es la
+        misma lógica del petróleo: lo que sale del inventario se convierte en costo del cuartel donde
+        se aplicó.
+      </p>
+    </div>
+
+    <h3>El IVA, en dos frases</h3>
+    <ul class="l">
+      <li><strong>IVA crédito fiscal</strong> (activo, cuenta 1.6): el IVA que pagaste al comprar. El SII te lo debe.</li>
+      <li><strong>IVA débito fiscal</strong> (pasivo, cuenta 2.3): el IVA que cobraste al vender. Se lo debes al SII.</li>
+    </ul>
+    <p>
+      Cada mes se restan uno del otro y la diferencia se paga o se arrastra. Eso es el formulario F29.
+      El IVA nunca es ingreso ni gasto de la empresa: sólo pasa por ella.
+    </p>
+  </section>
+
+  <!-- ═════════ 9 ═════════ -->
+  <section id="a9">
+    <h2><span class="n">09</span> El vocabulario del negocio</h2>
+    <p class="intro">
+      Las palabras que van a aparecer en la reunión, explicadas en una línea cada una.
+    </p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Palabra</th><th>Qué significa realmente</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Asiento</strong></td><td>Un movimiento anotado en el Libro Diario, con todas sus líneas de Debe y Haber</td></tr>
+          <tr><td><strong>Glosa</strong></td><td>La descripción del asiento: «Remuneraciones Buin julio 2026»</td></tr>
+          <tr><td><strong>Cuadrar</strong></td><td>Que el Debe sea exactamente igual al Haber. Si no cuadra, algo se anotó mal</td></tr>
+          <tr><td><strong>Saldo deudor</strong></td><td>La cuenta quedó con más Debe que Haber. Normal en activos y gastos</td></tr>
+          <tr><td><strong>Saldo acreedor</strong></td><td>Quedó con más Haber que Debe. Normal en pasivos, patrimonio e ingresos</td></tr>
+          <tr><td><strong>Devengar</strong></td><td>Reconocer el costo cuando <em>ocurre</em>, no cuando se paga. El sueldo de julio es costo de julio aunque se pague en agosto</td></tr>
+          <tr><td><strong>Total haber</strong><br><span style="font-size:12px;color:var(--ink-faint)">(en la liquidación)</span></td><td>Todo lo que el trabajador ganó antes de descuentos: sueldo base + gratificación + bonos</td></tr>
+          <tr><td><strong>Asignación familiar</strong></td><td>Un beneficio del Estado que pasa por la empresa. No es costo de la empresa, por eso se resta antes de repartir</td></tr>
+          <tr><td><strong>Líquido</strong></td><td>Lo que efectivamente se transfiere al trabajador, después de todos los descuentos</td></tr>
+          <tr><td><strong>Leyes sociales</strong></td><td>AFP, salud y seguros. Se descuentan del sueldo y la empresa las entera</td></tr>
+          <tr><td><strong>Centro de costo</strong></td><td>El cuartel o unidad a la que se le carga un gasto. En El Bosque: DZ23, SANTINA24, CA5…</td></tr>
+          <tr><td><strong>Depreciación</strong></td><td>Repartir el costo de un tractor a lo largo de los años que va a durar, en vez de cargarlo todo el primer año</td></tr>
+          <tr><td><strong>Ejercicio</strong></td><td>El período contable. En Chile, del 1 de enero al 31 de diciembre</td></tr>
+          <tr><td><strong>Prorratear</strong></td><td>Repartir una cifra entre varios, en proporción a algo. En el petróleo: repartir la diferencia según lo que consumió cada cuartel</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═════════ 10 ═════════ -->
+  <section id="a10">
+    <h2><span class="n">10</span> Qué decir en la reunión</h2>
+    <p class="intro">
+      Si te quedas con una sola cosa de toda esta guía, que sea esta sección.
+    </p>
+
+    <h3>El problema, en dos frases</h3>
+    <p class="frase">
+      Hoy la empresa lleva dos contabilidades que nadie concilia: la tributaria, donde los cuatro
+      campos son empresas separadas, y las planillas de gestión. Por eso no existe un costo confiable
+      por hectárea ni un estado de resultados de la empresa como unidad.
+    </p>
+
+    <h3>La solución, en una frase</h3>
+    <p class="frase">
+      SIGA anota cada peso una sola vez, pero con dos etiquetas: la cuenta contable que necesita el
+      contador y las trece dimensiones que necesita gerencia.
+    </p>
+
+    <h3>Si alguien pregunta cómo sabemos que está bien</h3>
+    <ul class="l">
+      <li>El costo repartido <strong>cuadra al peso</strong> con el libro de remuneraciones: desvío cero.</li>
+      <li>Los nueve asientos del ejercicio <strong>cuadran</strong>: Debe igual a Haber, $1.027.301.500.</li>
+      <li>El Balance <strong>no tiene descuadre</strong>.</li>
+      <li>El módulo de petróleo <strong>reproduce exactamente</strong> los números de la planilla: −1.840 L estimados, 200 L visibles, 2.040 L de diferencia.</li>
+      <li>El prorrateo da <strong>los mismos ajustes</strong> que hizo la contadora a mano: −9,6 y −9,4 litros.</li>
+    </ul>
+
+    <h3>Si te preguntan algo que no sabes</h3>
+    <div class="caja">
+      <p>
+        Decir <em>«no lo sé, lo confirmo y les respondo»</em> es mucho mejor que improvisar una respuesta
+        contable. Nadie espera que seas contador; esperan que entiendas el sistema. Y el informe ya
+        declara por escrito los seis supuestos que están pendientes de confirmación, así que puedes
+        apoyarte en él.
+      </p>
+    </div>
+
+    <h3>La pregunta que sí o sí va a salir</h3>
+    <div class="caja rojo">
+      <span class="t">«¿Y esto reemplaza al contador?»</span>
+      <p>
+        <strong>No.</strong> El contador sigue haciendo las liquidaciones y las declaraciones. Lo que cambia
+        es que deja de recibir planillas armadas a mano y pasa a recibir un archivo que sale del mismo
+        registro que usa la operación. Menos digitación, menos errores, y la empresa deja de tener dos
+        verdades distintas.
+      </p>
+    </div>
+  </section>
+
+  <footer class="fin">
+    Guía preparada para acompañar el informe de propuesta de SIGA · Agrícola El Bosque Ltda.
+    Todos los ejemplos usan cifras reales del sistema.
+  </footer>
+</div>

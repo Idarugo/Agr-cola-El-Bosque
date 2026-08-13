@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ────────────────────────────────────────────────────────────────
+   SIGA · Design tokens
+   Estilo: Data-Dense Dashboard · Verde agrícola + ámbar de gestión
+   ──────────────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    --surface: 255 255 255;
+    --surface-soft: 248 250 249;
+    --surface-raised: 255 255 255;
+    --ink: 15 23 42; /* slate-900 · contraste AA */
+    --ink-soft: 71 85 105; /* slate-600 */
+    --ink-faint: 100 116 139; /* slate-500 */
+    --hairline: 226 232 240; /* slate-200 */
+    --ring: 22 101 52;
+  }
+
+  .dark {
+    --surface: 9 14 20;
+    --surface-soft: 13 20 28;
+    --surface-raised: 19 27 36;
+    --ink: 236 243 240;
+    --ink-soft: 163 180 176;
+    --ink-faint: 126 143 141;
+    --hairline: 33 45 57;
+    --ring: 74 222 128;
+  }
+
+  * {
+    border-color: rgb(var(--hairline));
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-surface-soft text-ink font-sans antialiased;
+    font-size: 15px;
+    line-height: 1.55;
+    font-feature-settings: 'tnum' 0;
+  }
+
+  /* Foco visible y consistente en todo el sistema */
+  :focus-visible {
+    outline: 2px solid rgb(var(--ring));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    @apply bg-brand-500/25;
+  }
+
+  /* Scrollbars discretas */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-ink-faint/25;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ink-faint/45;
+    background-clip: content-box;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Números tabulares — imprescindible en columnas de dinero */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+
+  .card {
+    @apply rounded-xl border border-hairline bg-surface-raised shadow-card;
+  }
+
+  .card-hover {
+    @apply transition-[border-color,box-shadow] duration-200 hover:border-brand-500/40 hover:shadow-lift;
+  }
+
+  /* Tabla densa base */
+  .tbl {
+    @apply w-full border-collapse text-[13px];
+  }
+  .tbl thead th {
+    @apply sticky top-0 z-10 whitespace-nowrap border-b border-hairline bg-surface-soft px-3 py-2.5
+           text-left text-[11px] font-semibold uppercase tracking-wider text-ink-faint;
+  }
+  .tbl tbody td {
+    @apply border-b border-hairline/60 px-3 py-2 align-middle;
+  }
+  .tbl tbody tr {
+    @apply transition-colors duration-150 hover:bg-brand-500/[0.06];
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-hairline bg-surface px-3 py-2 text-sm text-ink
+           placeholder:text-ink-faint/70
+           transition-colors duration-200
+           focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/25
+           disabled:cursor-not-allowed disabled:opacity-55;
+  }
+
+  .label {
+    @apply mb-1.5 block text-[11px] font-semibold uppercase tracking-wider text-ink-faint;
+  }
+
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg px-3.5 py-2
+           text-sm font-medium transition-colors duration-200
+           disabled:pointer-events-none disabled:opacity-50;
+    min-height: 38px;
+  }
+  .btn-primary {
+    @apply btn bg-brand-700 text-white hover:bg-brand-600 dark:bg-brand-600 dark:hover:bg-brand-500;
+  }
+  .btn-accent {
+    @apply btn bg-accent-500 hover:bg-accent-400;
+    color: #451a03;
+  }
+  .btn-ghost {
+    @apply btn border border-hairline bg-surface text-ink-soft hover:border-ink-faint/50 hover:text-ink;
+  }
+  .btn-danger {
+    @apply btn border border-red-500/30 bg-red-500/10 text-red-600 hover:bg-red-500/20 dark:text-red-400;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] font-semibold
+           uppercase tracking-wide;
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden rounded bg-ink-faint/10;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full;
+    background: linear-gradient(90deg, transparent, rgb(var(--ink) / 0.06), transparent);
+    animation: shimmer 1.6s infinite;
+  }
+}
+
+/* SweetAlert2 — alineado a los tokens del sistema */
+.swal2-container {
+  backdrop-filter: blur(3px);
+}
+.swal2-popup.siga-swal {
+  background: rgb(var(--surface-raised));
+  color: rgb(var(--ink));
+  border: 1px solid rgb(var(--hairline));
+  border-radius: 14px;
+  font-family: 'Fira Sans', system-ui, sans-serif;
+}
+.swal2-popup.siga-swal .swal2-title {
+  color: rgb(var(--ink));
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.swal2-popup.siga-swal .swal2-html-container {
+  color: rgb(var(--ink-soft));
+  font-size: 0.9rem;
+}
+.swal2-popup.siga-swal .swal2-confirm,
+.swal2-popup.siga-swal .swal2-cancel,
+.swal2-popup.siga-swal .swal2-deny {
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  box-shadow: none !important;
+}
+.swal2-popup.siga-swal .swal2-input,
+.swal2-popup.siga-swal .swal2-select,
+.swal2-popup.siga-swal .swal2-textarea {
+  background: rgb(var(--surface));
+  color: rgb(var(--ink));
+  border: 1px solid rgb(var(--hairline));
+  border-radius: 8px;
+  box-shadow: none;
+  font-size: 0.9rem;
+}
+.swal2-popup.siga-swal .swal2-validation-message {
+  background: rgb(var(--surface-soft));
+  color: rgb(var(--ink-soft));
+}

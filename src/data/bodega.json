@@ -1,0 +1,1512 @@
+{
+"productos": [
+{
+"nombre": "ACEITE MINERAL",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "COADYUVANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "ACEITE WINSPRAY",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "COADYUVANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "ACETAMIPRID",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "INSECTICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "ADMIRAL 10 EC",
+"unidad": "LT",
+"ingredienteActivo": "PIRIPROXIFEN",
+"categoria": "INSECTICIDA",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "ALGAMAX",
+"unidad": "LT",
+"ingredienteActivo": "ASCOPHILUM",
+"categoria": "BIOESTIMULANTE",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "ALION",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "ASCOPHYLLUM",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "BIOESTIMULANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "AVAUNT 30 WG",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "INSECTICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "AZOTE",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "BIOESTIMULANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "AZOTE PLUS",
+"unidad": "LT",
+"ingredienteActivo": "AMINOTRIAZOL",
+"categoria": "BIOESTIMULANTE",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "AZUFRE MOJABLE",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "FUNGICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "AZUFRE POLVO VENTILADO",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "FUNGICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "AZUFRE SUPER -S-DP 93 %",
+"unidad": "KG",
+"ingredienteActivo": "AZUFRE",
+"categoria": "FUNGICIDA",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "AZUFRE SUPER S DP 93%",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "FUNGICIDA",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "BASACOTE PLUS 6M",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "BIFENTRIN 100 EC",
+"unidad": "LT",
+"ingredienteActivo": "BIFENTRINA 10%",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "BIOBACTER",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "BIOESTIMULANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "BIOELICITOR MAGNESIO",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "BM-86",
+"unidad": "LT",
+"ingredienteActivo": "ALGA",
+"categoria": "BIOESTIMULANTE",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "BROTONE",
+"unidad": "LT",
+"ingredienteActivo": "NITROGENO, COBRE, LIGNOSULFONATO",
+"categoria": "FUNGICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "CALDO BORDELES",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "FUNGICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "CALYPSO 480",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "CALYPSO 480 SC",
+"unidad": "LT",
+"ingredienteActivo": "TIACLOPRID",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "CANDADO 200 EW",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "CAPTAN 80 WG",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "FUNGICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "CENTURION SUPER",
+"unidad": "LT",
+"ingredienteActivo": "CLETODIMA",
+"categoria": "HERBICIDA",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "CENTURIÓN SUPER",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "HERBICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "CHAMP DP",
+"unidad": "KG",
+"ingredienteActivo": "HIDRÓXIDO DE COBRE",
+"categoria": "FUNGICIDA",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "CIANAMIDA HIDROGENADA (AGROSPEC)",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "CIDETRAC EGVM",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "CLICK 75 DF",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "COMET",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "CONSUL 65 WP",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "CORAGEN",
+"unidad": "LT",
+"ingredienteActivo": "CLORANTRANILIPROL",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "CORON 25",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "CUPRO BORDELES",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "FUNGICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "DASH",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "DEFENDER BORO",
+"unidad": "LT",
+"ingredienteActivo": "BORO",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "DEFENDER ZINC",
+"unidad": "LT",
+"ingredienteActivo": "ZINC",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "DEFENSE 80WP",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "DEMAND CS",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "ENVIDOR 240 SC",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "ETHRUK",
+"unidad": "LT",
+"ingredienteActivo": "ETEFÓN 48% SL",
+"categoria": "BIOESTIMULANTE",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "ETHRUK 48%",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "BIOESTIMULANTE",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "GALIGAN",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "HERBICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "GALIGAN 240 EC",
+"unidad": "LT",
+"ingredienteActivo": "OXIFLUORFEN",
+"categoria": "HERBICIDA",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "HERBADOX 45 SC",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "KAMAB 26",
+"unidad": "LT",
+"ingredienteActivo": "N.P.MG.K.",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "KARATE ZEON",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "KATANA",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "HERBICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "KAZARO 276 SL",
+"unidad": "LT",
+"ingredienteActivo": "PARACUAT",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "MADUREL",
+"unidad": "LT",
+"ingredienteActivo": "POTASIO",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "MANCOZEB 80% PM",
+"unidad": "KG",
+"ingredienteActivo": "MANCOSEB",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "MANZATE WG",
+"unidad": "KG",
+"ingredienteActivo": "MANCOSEB",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "MCPA 750 SL",
+"unidad": "LT",
+"ingredienteActivo": "MCPA",
+"categoria": "HERBICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "MICROQUEL ZINC",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "MINECTO PRO",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "MINENTRO PRO",
+"unidad": "LT",
+"ingredienteActivo": "ABAMECTINA",
+"categoria": "INSECTICIDA",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "MOVENTO SMART",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "NASCENT NITRO",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "NUTRI ZINC",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "NUTRI-ZINC",
+"unidad": "LT",
+"ingredienteActivo": "ZINC",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "NUTRICHELATES ZINC",
+"unidad": "LT",
+"ingredienteActivo": "ZINC",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "ORTHENE 75 SP",
+"unidad": "KG",
+"ingredienteActivo": "ACEFATO",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "OXICLORURO DE COBRE",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "FUNGICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "OXICUP WG",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "FUNGICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "PERMANGANATO DE POTASIO",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "PIRIPROXIFEN",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "PIRIPROXIFEN 100 EC",
+"unidad": "LT",
+"ingredienteActivo": "TEBUCONAZOL",
+"categoria": "FUNGICIDA",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "PODASPEC",
+"unidad": "LT",
+"ingredienteActivo": "TEBUCONAZOL",
+"categoria": "FUNGICIDA",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "PODASTIK MAX",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "BIOESTIMULANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "PUELCHE VTO",
+"unidad": "KG",
+"ingredienteActivo": "BACILLUS SUBTILIS CEPA ANTUMÁVIDA / BACILLUS SUBTILIS CEPA VILCÚN / BACILLUS LICHENIFORMIS CEPA MALLERAUCO / BREVIBACILLUS BREVIS CEPA MAGUELLINES / BREVIBACILLUS BREVIS CEPA MAGUELLINES I",
+"categoria": "BIOESTIMULANTE",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "PYRINEX 48% EC",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "RAIZAL 400",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "RIPPER FULL",
+"unidad": "LT",
+"ingredienteActivo": "GLIFOSATO",
+"categoria": "HERBICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "RUGBY 200 CS",
+"unidad": "LT",
+"ingredienteActivo": "CADUSAFOS",
+"categoria": "INSECTICIDA",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "SANMITE WP",
+"unidad": "KG",
+"ingredienteActivo": "PIRIDABENO",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "SILITEC",
+"unidad": "LT",
+"ingredienteActivo": "SILICIO ÁCIDO MONOSILÍSICO",
+"categoria": "BIOESTIMULANTE",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "SILITEC Q",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "BIOESTIMULANTE",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "SILWET",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "SILWET TX 100",
+"unidad": "LT",
+"ingredienteActivo": "PROPIHEPTAMETILTRISILOXANO",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "SPLENDOR 5 % SL",
+"unidad": "LT",
+"ingredienteActivo": "THIADIAZURON",
+"categoria": "INSECTICIDA",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "SPLENDOR 5% SC",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "STIMPLEX",
+"unidad": "LT",
+"ingredienteActivo": "ASCOPHYLLUM NODOSUM",
+"categoria": "BIOESTIMULANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "STREPTO PLUS",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "FUNGICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "SULFATO DE MAGNESIO",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "SULFATO DE POTASIO",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "SULFATO DE ZINC",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "SUPER FOSFATO TRIPLE",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "SUPER S WP",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "SYSTHANE 40 WP",
+"unidad": "KG",
+"ingredienteActivo": "MICLOBUTALINO",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "TEBUCONAZOL",
+"unidad": "LT",
+"ingredienteActivo": "TEBUCONAZOL",
+"categoria": "FUNGICIDA",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "TEBUCONAZOL 430 SC",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "FUNGICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "THIADIAZURON 50 % WP",
+"unidad": "KG",
+"ingredienteActivo": "THIADIAZURON",
+"categoria": "INSECTICIDA",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "THIOLUX",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "TILT PLUS",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "TRICHOFORTE",
+"unidad": "KG",
+"ingredienteActivo": "TRICHODERMA ATROVIRIDE CEPA TC Y CEPA T10 / TRICHODERMA HARZIANUM CEPA TA Y CEPA TF",
+"categoria": "BIOESTIMULANTE",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "TROYA 4 EC",
+"unidad": "LT",
+"ingredienteActivo": "CLORPIRIFOS",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "ULTRASOL MOPKCL",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "UREA",
+"unidad": "KG",
+"ingredienteActivo": "NITROGENO",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "UREA FOLIAR",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "UREA SUELO",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "VALOR 50 WP",
+"unidad": "KG",
+"ingredienteActivo": "FLUMIOXAZINA",
+"categoria": "HERBICIDA",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "ZEUS",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "ZINTRAC",
+"unidad": "LT",
+"ingredienteActivo": "",
+"categoria": "BIOESTIMULANTE",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "ZINTRAC 700",
+"unidad": "LT",
+"ingredienteActivo": "ZINC",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO"
+]
+},
+{
+"nombre": "ÁCIDO BÓRICO",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "OTRO",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+},
+{
+"nombre": "ÁCIDO FOSFÓRICO",
+"unidad": "KG",
+"ingredienteActivo": "",
+"categoria": "FERTILIZANTE",
+"campos": [
+"CHUMACO",
+"LOS_LIRIOS"
+]
+}
+],
+"stockSeptiembre": [
+{
+"campo": "CHUMACO",
+"producto": "ADMIRAL 10 EC",
+"cantidad": 9.0
+},
+{
+"campo": "CHUMACO",
+"producto": "ALGAMAX",
+"cantidad": 1.0
+},
+{
+"campo": "CHUMACO",
+"producto": "AZOTE PLUS",
+"cantidad": 10.0
+},
+{
+"campo": "CHUMACO",
+"producto": "AZUFRE SUPER S DP 93%",
+"cantidad": 1350.0
+},
+{
+"campo": "CHUMACO",
+"producto": "BIFENTRIN 100 EC",
+"cantidad": 5.0
+},
+{
+"campo": "CHUMACO",
+"producto": "BM-86",
+"cantidad": 5.0
+},
+{
+"campo": "CHUMACO",
+"producto": "BROTONE",
+"cantidad": 1.0
+},
+{
+"campo": "CHUMACO",
+"producto": "CALYPSO 480 SC",
+"cantidad": 2.0
+},
+{
+"campo": "CHUMACO",
+"producto": "CENTURIÓN SUPER",
+"cantidad": 4.0
+},
+{
+"campo": "CHUMACO",
+"producto": "CHAMP DP",
+"cantidad": 4.0
+},
+{
+"campo": "CHUMACO",
+"producto": "CORAGEN",
+"cantidad": 1.0
+},
+{
+"campo": "CHUMACO",
+"producto": "DEFENDER BORO",
+"cantidad": 60.0
+},
+{
+"campo": "CHUMACO",
+"producto": "DEFENDER ZINC",
+"cantidad": 3.0
+},
+{
+"campo": "CHUMACO",
+"producto": "ETHRUK 48%",
+"cantidad": 3.0
+},
+{
+"campo": "CHUMACO",
+"producto": "GALIGAN 240 EC",
+"cantidad": 3.5
+},
+{
+"campo": "CHUMACO",
+"producto": "KAMAB 26",
+"cantidad": 3.0
+},
+{
+"campo": "CHUMACO",
+"producto": "KAZARO 276 SL",
+"cantidad": 4.0
+},
+{
+"campo": "CHUMACO",
+"producto": "MADUREL",
+"cantidad": 15.0
+},
+{
+"campo": "CHUMACO",
+"producto": "MANCOZEB 80% PM",
+"cantidad": 2.0
+},
+{
+"campo": "CHUMACO",
+"producto": "MANZATE WG",
+"cantidad": 5.0
+},
+{
+"campo": "CHUMACO",
+"producto": "MCPA 750 SL",
+"cantidad": 25.0
+},
+{
+"campo": "CHUMACO",
+"producto": "MINECTO PRO",
+"cantidad": 1.0
+},
+{
+"campo": "CHUMACO",
+"producto": "NUTRI ZINC",
+"cantidad": 3.0
+},
+{
+"campo": "CHUMACO",
+"producto": "NUTRICHELATES ZINC",
+"cantidad": 5.0
+},
+{
+"campo": "CHUMACO",
+"producto": "ORTHENE 75 SP",
+"cantidad": 0.5
+},
+{
+"campo": "CHUMACO",
+"producto": "PIRIPROXIFEN",
+"cantidad": 5.0
+},
+{
+"campo": "CHUMACO",
+"producto": "PODASPEC",
+"cantidad": 3.78
+},
+{
+"campo": "CHUMACO",
+"producto": "PUELCHE VTO",
+"cantidad": 10.0
+},
+{
+"campo": "CHUMACO",
+"producto": "RIPPER FULL",
+"cantidad": 22.0
+},
+{
+"campo": "CHUMACO",
+"producto": "RUGBY 200 CS",
+"cantidad": 6.0
+},
+{
+"campo": "CHUMACO",
+"producto": "SANMITE WP",
+"cantidad": 3.0
+},
+{
+"campo": "CHUMACO",
+"producto": "SILITEC Q",
+"cantidad": 2.0
+},
+{
+"campo": "CHUMACO",
+"producto": "SILWET TX 100",
+"cantidad": 1.0
+},
+{
+"campo": "CHUMACO",
+"producto": "SPLENDOR 5% SC",
+"cantidad": 1.0
+},
+{
+"campo": "CHUMACO",
+"producto": "STIMPLEX",
+"cantidad": 10.0
+},
+{
+"campo": "CHUMACO",
+"producto": "SYSTHANE 40 WP",
+"cantidad": 0.3
+},
+{
+"campo": "CHUMACO",
+"producto": "TEBUCONAZOL",
+"cantidad": 1.2
+},
+{
+"campo": "CHUMACO",
+"producto": "THIADIAZURON 50 % WP",
+"cantidad": 0.4
+},
+{
+"campo": "CHUMACO",
+"producto": "TRICHOFORTE",
+"cantidad": 0.5
+},
+{
+"campo": "CHUMACO",
+"producto": "TROYA 4 EC",
+"cantidad": 1.0
+},
+{
+"campo": "CHUMACO",
+"producto": "UREA SUELO",
+"cantidad": 5250.0
+},
+{
+"campo": "CHUMACO",
+"producto": "VALOR 50 WP",
+"cantidad": 0.8
+},
+{
+"campo": "CHUMACO",
+"producto": "ZINTRAC",
+"cantidad": 1.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "ACEITE WINSPRAY",
+"cantidad": 380.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "ACETAMIPRID",
+"cantidad": 6.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "ASCOPHYLLUM",
+"cantidad": 6.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "AVAUNT 30 WG",
+"cantidad": 1.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "AZUFRE POLVO VENTILADO",
+"cantidad": 750.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "BASACOTE PLUS 6M",
+"cantidad": 56.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "BIOBACTER",
+"cantidad": 2.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "BIOELICITOR MAGNESIO",
+"cantidad": 15.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "BROTONE",
+"cantidad": 10.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "CALYPSO 480 SC",
+"cantidad": 1.3
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "CANDADO 200 EW",
+"cantidad": 1.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "CAPTAN 80 WG",
+"cantidad": 12.5
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "CLICK 75 DF",
+"cantidad": 2.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "COMET",
+"cantidad": 4.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "CONSUL 65 WP",
+"cantidad": 44.15
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "CORON 25",
+"cantidad": 1.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "DASH",
+"cantidad": 5.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "DEMAND CS",
+"cantidad": 0.5
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "ENVIDOR 240 SC",
+"cantidad": 0.7
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "GALIGAN",
+"cantidad": 5.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "HERBADOX 45 SC",
+"cantidad": 20.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "KAMAB 26",
+"cantidad": 30.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "KARATE ZEON",
+"cantidad": 4.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "KATANA",
+"cantidad": 1.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "MCPA 750 SL",
+"cantidad": 8.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "MICROQUEL ZINC",
+"cantidad": 10.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "MOVENTO SMART",
+"cantidad": 85.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "NASCENT NITRO",
+"cantidad": 150.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "NUTRICHELATES ZINC",
+"cantidad": 30.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "OXICUP WG",
+"cantidad": 319.67
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "PERMANGANATO DE POTASIO",
+"cantidad": 2.155
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "PODASTIK MAX",
+"cantidad": 5.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "PYRINEX 48% EC",
+"cantidad": 23.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "RAIZAL 400",
+"cantidad": 5.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "RIPPER FULL",
+"cantidad": 18.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "SPLENDOR 5% SC",
+"cantidad": 0.75
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "STIMPLEX",
+"cantidad": 15.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "STREPTO PLUS",
+"cantidad": 1.02
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "SULFATO DE MAGNESIO",
+"cantidad": 6000.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "SULFATO DE POTASIO",
+"cantidad": 5100.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "SUPER FOSFATO TRIPLE",
+"cantidad": 150.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "SUPER S WP",
+"cantidad": 350.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "TEBUCONAZOL 430 SC",
+"cantidad": 10.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "THIOLUX",
+"cantidad": 79.645
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "TILT PLUS",
+"cantidad": 153.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "ULTRASOL MOPKCL",
+"cantidad": 4575.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "UREA SUELO",
+"cantidad": 1475.0
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "VALOR 50 WP",
+"cantidad": 0.2
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "ZEUS",
+"cantidad": 0.2
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "ÁCIDO BÓRICO",
+"cantidad": 156.7
+},
+{
+"campo": "LOS_LIRIOS",
+"producto": "ÁCIDO FOSFÓRICO",
+"cantidad": 555.0
+}
+]
+}

@@ -1,0 +1,5 @@
+node_modules
+dist
+.prueba
+.DS_Store
+*.local

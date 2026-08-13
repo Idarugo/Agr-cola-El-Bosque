@@ -1,0 +1,1523 @@
+<meta charset="utf-8">
+<title>SIGA · Informe de propuesta — Agrícola El Bosque Ltda.</title>
+<style>
+  /* ═══════════════════════════════════════════════════════════
+     Paleta: neutros con sesgo verde (elegidos, no heredados).
+     Verde huerto = operación · ocre = registro contable.
+     ═══════════════════════════════════════════════════════════ */
+  :root {
+    --ground: #F5F8F4;
+    --surface: #FFFFFF;
+    --surface-2: #EDF2EC;
+    --ink: #14211A;
+    --ink-soft: #4A5951;
+    --ink-faint: #6E7E75;
+    --rule: #DCE4DA;
+    --rule-soft: #E9EFE8;
+    --verde: #1F6B3E;
+    --verde-soft: #E4F0E8;
+    --ocre: #9C6410;
+    --ocre-soft: #F6EEDF;
+    --critico: #A8231B;
+    --critico-soft: #FBE9E7;
+    --aviso: #9A5B08;
+    --aviso-soft: #FCF0DE;
+    --shadow: 0 1px 2px rgba(20, 33, 26, .05), 0 4px 14px rgba(20, 33, 26, .05);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #090E0B;
+      --surface: #111A14;
+      --surface-2: #16211A;
+      --ink: #E4EDE7;
+      --ink-soft: #9FB2A6;
+      --ink-faint: #7B8E82;
+      --rule: #1F2C24;
+      --rule-soft: #18231C;
+      --verde: #58B57D;
+      --verde-soft: #12261A;
+      --ocre: #D2A24F;
+      --ocre-soft: #241D0F;
+      --critico: #EF8177;
+      --critico-soft: #2A1512;
+      --aviso: #E0A64E;
+      --aviso-soft: #251B0D;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 14px rgba(0, 0, 0, .25);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #090E0B;
+    --surface: #111A14;
+    --surface-2: #16211A;
+    --ink: #E4EDE7;
+    --ink-soft: #9FB2A6;
+    --ink-faint: #7B8E82;
+    --rule: #1F2C24;
+    --rule-soft: #18231C;
+    --verde: #58B57D;
+    --verde-soft: #12261A;
+    --ocre: #D2A24F;
+    --ocre-soft: #241D0F;
+    --critico: #EF8177;
+    --critico-soft: #2A1512;
+    --aviso: #E0A64E;
+    --aviso-soft: #251B0D;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 14px rgba(0, 0, 0, .25);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .mono, code, .dato {
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Estructura ─────────────────────────────────────────── */
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px 96px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 56px;
+  }
+  @media (min-width: 1080px) {
+    .wrap { grid-template-columns: 210px minmax(0, 1fr); }
+  }
+
+  .rail { display: none; }
+  @media (min-width: 1080px) {
+    .rail {
+      display: block;
+      position: sticky;
+      top: 0;
+      align-self: start;
+      max-height: 100vh;
+      overflow-y: auto;
+      padding: 40px 0;
+      grid-row: 2;
+    }
+  }
+  .rail p {
+    margin: 0 0 12px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .rail ol { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 2px; }
+  .rail a {
+    display: flex;
+    gap: 9px;
+    padding: 5px 8px 5px 0;
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    padding-left: 10px;
+    transition: color .15s, border-color .15s;
+  }
+  .rail a:hover { color: var(--verde); border-left-color: var(--verde); }
+  .rail a .n { color: var(--ink-faint); font-size: 11px; padding-top: 1px; }
+
+  main { grid-row: 2; min-width: 0; }
+
+  /* ── Masthead ───────────────────────────────────────────── */
+  header.masthead {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    border-bottom: 2px solid var(--ink);
+    padding: 44px 0 22px;
+    margin-bottom: 44px;
+  }
+  .eyebrow {
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--verde);
+    margin: 0 0 14px;
+    font-weight: 600;
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(30px, 5.2vw, 50px);
+    line-height: 1.04;
+    letter-spacing: -.032em;
+    font-weight: 700;
+    text-wrap: balance;
+    max-width: 20ch;
+  }
+  .sub {
+    margin: 16px 0 0;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+  .meta {
+    margin-top: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 32px;
+    font-size: 12.5px;
+  }
+  .meta div { display: flex; flex-direction: column; gap: 1px; }
+  .meta dt {
+    font-size: 10px;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 600;
+  }
+  .meta dd { margin: 0; color: var(--ink); font-weight: 500; }
+
+  /* ── Secciones ──────────────────────────────────────────── */
+  section { margin: 0 0 68px; scroll-margin-top: 24px; }
+  h2 {
+    margin: 0 0 6px;
+    font-size: clamp(21px, 2.7vw, 28px);
+    letter-spacing: -.022em;
+    line-height: 1.18;
+    font-weight: 700;
+    text-wrap: balance;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  h2 .num {
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--verde);
+    letter-spacing: 0;
+    flex: none;
+  }
+  .lede {
+    margin: 0 0 26px;
+    font-size: 16.5px;
+    color: var(--ink-soft);
+    max-width: 68ch;
+    padding-left: 33px;
+  }
+  @media (max-width: 640px) { .lede { padding-left: 0; } }
+
+  h3 {
+    margin: 34px 0 10px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -.008em;
+  }
+  h4 {
+    margin: 22px 0 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  p { margin: 0 0 14px; max-width: 70ch; }
+  strong { font-weight: 650; color: var(--ink); }
+  a { color: var(--verde); }
+
+  ul.lista { margin: 0 0 16px; padding: 0 0 0 2px; list-style: none; display: flex; flex-direction: column; gap: 9px; max-width: 70ch; }
+  ul.lista li { display: flex; gap: 11px; }
+  ul.lista li::before {
+    content: "";
+    flex: none;
+    width: 5px; height: 5px;
+    border-radius: 1px;
+    background: var(--verde);
+    margin-top: 10px;
+  }
+
+  /* ── Cita del cliente (voz distinta: serif) ─────────────── */
+  blockquote {
+    margin: 18px 0 22px;
+    padding: 4px 0 4px 20px;
+    border-left: 3px solid var(--ocre);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 62ch;
+  }
+  blockquote cite {
+    display: block;
+    margin-top: 8px;
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 11px;
+    font-style: normal;
+    letter-spacing: .06em;
+    color: var(--ink-faint);
+  }
+
+  /* ── Tablas ─────────────────────────────────────────────── */
+  .tabla-wrap { overflow-x: auto; margin: 0 0 20px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  thead th {
+    text-align: left;
+    padding: 10px 14px;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--rule);
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  tbody td { padding: 11px 14px; border-bottom: 1px solid var(--rule-soft); vertical-align: top; line-height: 1.5; }
+  tbody tr:last-child td { border-bottom: none; }
+  td.num, th.num { text-align: right; font-family: ui-monospace, Menlo, monospace; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* ── Píldoras ───────────────────────────────────────────── */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .p-ok { background: var(--verde-soft); color: var(--verde); }
+  .p-ocre { background: var(--ocre-soft); color: var(--ocre); }
+  .p-crit { background: var(--critico-soft); color: var(--critico); }
+  .p-avi { background: var(--aviso-soft); color: var(--aviso); }
+  .p-gris { background: var(--surface-2); color: var(--ink-faint); }
+
+  /* ── Bloque de datos verificados ────────────────────────── */
+  .verif {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 0 20px;
+  }
+  .verif header {
+    padding: 10px 16px;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--rule);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .verif ul { margin: 0; padding: 6px 0; list-style: none; }
+  .verif li {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 6px 16px;
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 12.5px;
+    font-variant-numeric: tabular-nums;
+  }
+  .verif li .lbl { flex: 1 1 auto; color: var(--ink-soft); min-width: 0; }
+  .verif li .val { flex: none; color: var(--ink); font-weight: 600; }
+  .verif li .chk { flex: none; color: var(--verde); font-weight: 700; width: 14px; text-align: center; }
+
+  /* ── Tarjetas ───────────────────────────────────────────── */
+  .grid2 { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 0 0 22px; }
+  @media (min-width: 720px) { .grid2 { grid-template-columns: 1fr 1fr; } }
+  .grid3 { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 0 0 22px; }
+  @media (min-width: 640px) { .grid3 { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 940px) { .grid3 { grid-template-columns: repeat(4, 1fr); } }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 16px 18px;
+    box-shadow: var(--shadow);
+  }
+  .card h5 { margin: 0 0 6px; font-size: 14px; font-weight: 700; letter-spacing: -.005em; }
+  .card p { margin: 0; font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
+
+  .kpi { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 15px 16px; }
+  .kpi .k {
+    font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 700; margin: 0 0 7px;
+  }
+  .kpi .v {
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 25px; font-weight: 600; line-height: 1;
+    letter-spacing: -.02em; color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .kpi .s { margin: 6px 0 0; font-size: 12px; color: var(--ink-faint); line-height: 1.4; }
+
+  /* ── Aviso destacado ────────────────────────────────────── */
+  .aviso {
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--aviso);
+    background: var(--surface);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 0 0 22px;
+  }
+  .aviso.crit { border-left-color: var(--critico); }
+  .aviso.ok { border-left-color: var(--verde); }
+  .aviso p { margin: 0; font-size: 14px; color: var(--ink-soft); max-width: none; }
+  .aviso p + p { margin-top: 8px; }
+  .aviso .t { font-weight: 700; color: var(--ink); display: block; margin-bottom: 4px; font-size: 13.5px; }
+
+  /* ── Carta Gantt ────────────────────────────────────────── */
+  .gantt-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); margin: 0 0 16px; }
+  .gantt { min-width: 780px; }
+  .gantt-head, .gantt-row {
+    display: grid;
+    grid-template-columns: 230px repeat(24, 1fr);
+    align-items: center;
+  }
+  .gantt-head {
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--rule);
+    position: sticky; top: 0;
+  }
+  .gantt-head .lbl, .gantt-row .lbl {
+    padding: 9px 14px;
+    font-size: 12.5px;
+    line-height: 1.35;
+    border-right: 1px solid var(--rule);
+    min-width: 0;
+  }
+  .gantt-head .lbl {
+    font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 700;
+  }
+  .gantt-head .m {
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 10px; text-align: center; color: var(--ink-faint);
+    padding: 9px 0; border-left: 1px solid var(--rule-soft);
+  }
+  .gantt-row { border-bottom: 1px solid var(--rule-soft); }
+  .gantt-row:last-child { border-bottom: none; }
+  .gantt-row .lbl { display: flex; flex-direction: column; gap: 2px; }
+  .gantt-row .lbl b { font-weight: 650; }
+  .gantt-row .lbl span { font-size: 11px; color: var(--ink-faint); }
+  .gantt-cell { height: 40px; border-left: 1px solid var(--rule-soft); }
+  .bar {
+    grid-row: 1;
+    height: 20px;
+    border-radius: 4px;
+    margin: 10px 2px;
+    display: flex; align-items: center;
+    padding: 0 7px;
+    font-size: 10px; font-weight: 700;
+    color: #fff;
+    white-space: nowrap; overflow: hidden;
+  }
+  .b-verde { background: var(--verde); }
+  .b-ocre { background: var(--ocre); }
+  .b-crit { background: var(--critico); }
+  .gantt-leyenda { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12px; color: var(--ink-soft); margin: 0 0 22px; }
+  .gantt-leyenda span { display: inline-flex; align-items: center; gap: 6px; }
+  .sw { width: 11px; height: 11px; border-radius: 2px; flex: none; }
+
+  /* ── FODA ───────────────────────────────────────────────── */
+  .foda { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 0 0 22px; }
+  @media (min-width: 760px) { .foda { grid-template-columns: 1fr 1fr; } }
+  .foda-box { border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); overflow: hidden; }
+  .foda-box > header {
+    padding: 10px 16px; border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  }
+  .foda-box > header h5 { margin: 0; font-size: 13px; font-weight: 700; letter-spacing: .02em; }
+  .foda-box ol { margin: 0; padding: 10px 16px 14px 30px; display: flex; flex-direction: column; gap: 8px; }
+  .foda-box li { font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); }
+  .foda-box li b { color: var(--ink); font-weight: 650; }
+  .f-int > header { background: var(--verde-soft); }
+  .f-ext > header { background: var(--ocre-soft); }
+  .f-neg > header { background: var(--critico-soft); }
+  .f-neg2 > header { background: var(--aviso-soft); }
+
+  footer.cierre {
+    border-top: 2px solid var(--ink);
+    padding-top: 20px;
+    margin-top: 20px;
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    max-width: 70ch;
+  }
+
+  :focus-visible { outline: 2px solid var(--verde); outline-offset: 3px; border-radius: 3px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+  @media print {
+    .rail { display: none; }
+    .wrap { grid-template-columns: 1fr; }
+    section { break-inside: avoid-page; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Informe de propuesta · Reunión de presentación</p>
+    <h1>Un solo sistema para reemplazar el ecosistema de planillas</h1>
+    <p class="sub">
+      SIGA — Sistema Integrado de Gestión Agrícola. Documento preparado a partir de los
+      siete archivos entregados por la empresa, con el detalle de qué se hace hoy en Excel,
+      cómo queda resuelto en el sistema, qué se verificó contra los números reales y qué
+      falta decidir.
+    </p>
+    <dl class="meta">
+      <div><dt>Empresa</dt><dd>Agrícola El Bosque Ltda.</dd></div>
+      <div><dt>RUT</dt><dd class="mono">78.993.480-0</dd></div>
+      <div><dt>Campos</dt><dd>Buin · Graneros · Los Lirios · Chumaco</dd></div>
+      <div><dt>Estado</dt><dd>Prototipo funcional verificado</dd></div>
+      <div><dt>Fecha</dt><dd class="mono">13-08-2026</dd></div>
+    </dl>
+  </header>
+
+  <nav class="rail" aria-label="Índice del informe">
+    <p>Contenido</p>
+    <ol>
+      <li><a href="#s1"><span class="n">01</span> Resumen ejecutivo</a></li>
+      <li><a href="#s2"><span class="n">02</span> Diagnóstico</a></li>
+      <li><a href="#s3"><span class="n">03</span> Alcance revisado</a></li>
+      <li><a href="#s4"><span class="n">04</span> Excel → Sistema</a></li>
+      <li><a href="#s5"><span class="n">05</span> Los módulos</a></li>
+      <li><a href="#s6"><span class="n">06</span> Verificación</a></li>
+      <li><a href="#s7"><span class="n">07</span> Hallazgos</a></li>
+      <li><a href="#s8"><span class="n">08</span> En qué ayuda</a></li>
+      <li><a href="#s9"><span class="n">09</span> FODA</a></li>
+      <li><a href="#s10"><span class="n">10</span> Carta Gantt</a></li>
+      <li><a href="#s11"><span class="n">11</span> Riesgos</a></li>
+      <li><a href="#s12"><span class="n">12</span> Decisiones</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <!-- ══════════ 1 ══════════ -->
+    <section id="s1">
+      <h2><span class="num">01</span> Resumen ejecutivo</h2>
+      <p class="lede">
+        Existe un prototipo funcional con trece módulos, construido sobre los maestros
+        reales de la empresa y verificado contra los números de sus propias planillas.
+      </p>
+
+      <p>
+        El problema central no es la falta de planillas: es que hay <strong>dos fuentes de
+        información que nadie concilia</strong>. Por un lado la contabilidad tributaria externa,
+        donde los cuatro campos están cargados en Nubox como empresas distintas. Por otro las
+        planillas internas de gestión, que se construyeron sin retroalimentación hacia los
+        administradores de campo. El resultado es duplicidad de esfuerzo, ausencia de cierres
+        integrados y ningún dato confiable de costo real por hectárea.
+      </p>
+
+      <p>
+        SIGA une ambos mundos en una sola base: <strong>la tarja alimenta el costeo, el costeo
+        alimenta el asiento contable, y el asiento sale en el formato que el contador ya usa</strong>.
+        Cada peso aparece simultáneamente en el mundo tributario (cuenta 5.1, Balance, Estado de
+        Resultados) y en el mundo de gestión (labor, cuartel, especie, hectárea), sin doble digitación.
+      </p>
+
+      <div class="grid3">
+        <div class="kpi"><p class="k">Módulos</p><p class="v">13</p><p class="s">Operativos y verificados</p></div>
+        <div class="kpi"><p class="k">Archivos analizados</p><p class="v">7</p><p class="s">Con 47 hojas de cálculo</p></div>
+        <div class="kpi"><p class="k">Maestros cargados</p><p class="v">100%</p><p class="s">Datos reales, no de ejemplo</p></div>
+        <div class="kpi"><p class="k">Controles que cuadran</p><p class="v">28</p><p class="s">Verificados al peso y al litro</p></div>
+      </div>
+
+      <div class="aviso ok">
+        <p><span class="t">Lo que ya está resuelto</span>
+        Plan de cuentas de 13 niveles operativo · motor de costeo que cuadra al peso ·
+        contabilidad de doble entrada completa · control de combustible que reproduce los
+        números de la planilla real · bodega con registro fitosanitario y control de carencias ·
+        prevención de riesgos · control de acceso con bitácora.</p>
+      </div>
+
+      <div class="aviso crit">
+        <p><span class="t">Lo que falta y condiciona todo lo demás</span>
+        El sistema guarda los datos en un solo navegador. <strong>No hay servidor, no hay respaldo
+        y no pueden trabajar dos personas a la vez.</strong> Es la primera inversión que hay que
+        decidir; el resto del plan depende de ella.</p>
+      </div>
+    </section>
+
+    <!-- ══════════ 2 ══════════ -->
+    <section id="s2">
+      <h2><span class="num">02</span> Diagnóstico: qué pasa hoy</h2>
+      <p class="lede">
+        Extraído de los documentos entregados por la empresa. Las citas son textuales de
+        su propio informe de RRHH.
+      </p>
+
+      <h3>2.1 Dos contabilidades que no se hablan</h3>
+      <blockquote>
+        El contador ingresó la información a Nubox de los 4 campos como empresas distintas,
+        sin embargo son centros de costos distintos. Nunca tuvo la intención de enlazar esta
+        información como algo operativo.
+        <cite>RRHH.docx · Presentación inicial</cite>
+      </blockquote>
+      <p>
+        Esa decisión, tomada por conveniencia tributaria, impide consolidar. No se puede comparar
+        el costo de la poda en Buin contra Graneros porque están en bases separadas, y no existe
+        un estado de resultados de la empresa como unidad.
+      </p>
+
+      <h3>2.2 La tarja no cuadra con el libro de remuneraciones</h3>
+      <blockquote>
+        La tarja trabaja con valores líquidos, lo que no se complementa con el libro de
+        remuneraciones.
+        <cite>RRHH.docx · Problema principal</cite>
+      </blockquote>
+      <p>
+        En junio de 2026 se hizo el trabajo de cuadrarlas: se determinó el porcentaje día
+        respecto al mes y se distribuyó el sueldo real (total haber menos asignación familiar)
+        cruzando por RUT. Ese método funcionó, pero quedó como una macro que no se pudo
+        replicar a los otros campos.
+      </p>
+
+      <h3>2.3 Cuatro formatos para lo mismo</h3>
+      <p>
+        Buin y Graneros comparten estructura de tarja; Chumaco y Los Lirios tienen columnas
+        adicionales que casi no se usan. Cada consolidación exige reconciliar formatos a mano
+        antes de poder sumar.
+      </p>
+
+      <h3>2.4 Trabajo manual que se repite todos los meses</h3>
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr><th>Tarea</th><th>Cómo se hace hoy</th><th>Consecuencia</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Planilla al contador</strong></td>
+              <td>Se revisa la tarja, se corrigen errores, se completan datos y se arma la planilla campo por campo</td>
+              <td>Cuatro procesos paralelos cada mes</td>
+            </tr>
+            <tr>
+              <td><strong>Revisión de liquidaciones</strong></td>
+              <td>El contador las confecciona en Nubox y las devuelve; hay que revisarlas de nuevo</td>
+              <td>Doble control por errores recurrentes</td>
+            </tr>
+            <tr>
+              <td><strong>Nómina bancaria</strong></td>
+              <td>Se arma a mano porque Nubox no la genera; se usa un archivo con macro</td>
+              <td>Riesgo de error en transferencias</td>
+            </tr>
+            <tr>
+              <td><strong>Licencias médicas</strong></td>
+              <td>En planilla aparte, porque el contador no permite cargarlas en Nubox</td>
+              <td>Tercera fuente de información</td>
+            </tr>
+            <tr>
+              <td><strong>Control de EPP</strong></td>
+              <td>Manual; el jefe de campo mayoritariamente no lo usa</td>
+              <td>El stock nunca cuadra</td>
+            </tr>
+            <tr>
+              <td><strong>Petróleo</strong></td>
+              <td>Planilla con prorrateo manual por regla de tres tras cada control</td>
+              <td>Diferencias que se arrastran</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>2.5 Lo que está aprobado pero no se puede implementar</h3>
+      <blockquote>
+        Pack motivacional — mi jefe esta parte la tiene aprobada pero no contamos con los
+        registros para implementarla.
+        <cite>RRHH.docx · Expectativas adicionales</cite>
+      </blockquote>
+      <p>
+        El programa de incentivos por asistencia, puntualidad y uso de EPP está autorizado
+        desde hace tiempo. No avanza porque no existe el registro diario que lo alimente.
+        Lo mismo ocurre con la mala evaluación recibida de la ACHS: falta el respaldo
+        documental de charlas, capacitaciones y entrega de EPP.
+      </p>
+    </section>
+
+    <!-- ══════════ 3 ══════════ -->
+    <section id="s3">
+      <h2><span class="num">03</span> Alcance de lo revisado</h2>
+      <p class="lede">
+        Siete archivos, cuarenta y siete hojas de cálculo, leídos completos. Todo lo que
+        sigue está construido sobre ellos.
+      </p>
+
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr><th>Archivo</th><th>Contenido</th><th>Uso en el sistema</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mono">Estructura del Plan de Cuentas.docx</td>
+              <td>Definición conceptual de los 13 niveles</td>
+              <td><span class="pill p-ok">Implementado</span></td>
+            </tr>
+            <tr>
+              <td class="mono">Maestro_Plan_de_Cuentas.xlsx</td>
+              <td>17 hojas: cuentas, cargos, especies, variedades, base operativa, labores</td>
+              <td><span class="pill p-ok">Maestros cargados</span></td>
+            </tr>
+            <tr>
+              <td class="mono">RRHH.docx</td>
+              <td>Diagnóstico, reglas de costeo, expectativas de seguridad e incentivos</td>
+              <td><span class="pill p-ok">Reglas implementadas</span></td>
+            </tr>
+            <tr>
+              <td class="mono">Sistema_contable_AEB_V01.xlsx</td>
+              <td>19 hojas: plan financiero, libro diario, mayor, balance 8 columnas, EERR</td>
+              <td><span class="pill p-ok">Módulo completo</span></td>
+            </tr>
+            <tr>
+              <td class="mono">Planilla control de petróleos.xlsx</td>
+              <td>11 hojas: inventario de estanque, prorrateo, calibración, stock de insumos</td>
+              <td><span class="pill p-ok">Dos módulos</span></td>
+            </tr>
+            <tr>
+              <td class="mono">HOJA CONTEO LITROS PETROLEO.xlsx</td>
+              <td>Procedimiento formal de conteo en 5 pasos</td>
+              <td><span class="pill p-ok">Asistente guiado</span></td>
+            </tr>
+            <tr>
+              <td class="mono">ae_sic2.pdf</td>
+              <td>Texto de Sistemas de Información Contable</td>
+              <td><span class="pill p-gris">Referencia conceptual</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Maestros efectivamente cargados</h4>
+      <div class="grid3">
+        <div class="kpi"><p class="k">Cuentas analíticas</p><p class="v">141</p><p class="s">Plan de 13 niveles</p></div>
+        <div class="kpi"><p class="k">Cuentas financieras</p><p class="v">46</p><p class="s">Balance y EERR</p></div>
+        <div class="kpi"><p class="k">Cuarteles</p><p class="v">124</p><p class="s">Base operativa agrícola</p></div>
+        <div class="kpi"><p class="k">Centros de costo</p><p class="v">40</p><p class="s">Los cuatro campos</p></div>
+        <div class="kpi"><p class="k">Productos de bodega</p><p class="v">108</p><p class="s">Con ingrediente activo</p></div>
+        <div class="kpi"><p class="k">Movimientos de petróleo</p><p class="v">319</p><p class="s">Reales, desde junio 2024</p></div>
+        <div class="kpi"><p class="k">Cargos con cuenta</p><p class="v">14</p><p class="s">Puente RRHH–contabilidad</p></div>
+        <div class="kpi"><p class="k">Variedades</p><p class="v">22</p><p class="s">En 7 especies</p></div>
+      </div>
+    </section>
+
+    <!-- ══════════ 4 ══════════ -->
+    <section id="s4">
+      <h2><span class="num">04</span> Excel → Sistema, tarea por tarea</h2>
+      <p class="lede">
+        La equivalencia directa entre lo que se hace hoy y cómo queda resuelto. Ésta es la
+        tabla central del informe.
+      </p>
+
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="min-width:180px">Tarea</th>
+              <th style="min-width:230px">Hoy, en Excel</th>
+              <th style="min-width:250px">En el sistema</th>
+              <th>Cambio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Registro de asistencia</strong></td>
+              <td>Cuatro tarjas con formatos distintos, una por campo</td>
+              <td>Una grilla mensual única: trabajador × día, con labor, centro de costo, hora de llegada y tipo de día</td>
+              <td>Formato único · carga masiva por cuadrilla</td>
+            </tr>
+            <tr>
+              <td><strong>Días no trabajados</strong></td>
+              <td>El trato se marcaba como “no trabajador” para efectos de liquidación</td>
+              <td>Nueve tipos de día tipificados; el trato se convierte a equivalencia de jornada real</td>
+              <td>Trazabilidad de asistencia, licencias y seguridad</td>
+            </tr>
+            <tr>
+              <td><strong>Distribución del costo</strong></td>
+              <td>Macro y Power Query sobre la tarja, replicable sólo en Buin</td>
+              <td>Motor que reparte con las reglas escritas en el documento de RRHH, para cualquier campo y período</td>
+              <td>Cuadra al peso · advertencias de control</td>
+            </tr>
+            <tr>
+              <td><strong>Libro de remuneraciones</strong></td>
+              <td>Se cruza a mano con BUSCARX por RUT</td>
+              <td>Se importa el export de Nubox; el cruce por RUT es automático con vista previa</td>
+              <td>Sin digitación · detecta RUT sin trabajador</td>
+            </tr>
+            <tr>
+              <td><strong>Planilla para el contador</strong></td>
+              <td>Se arma campo por campo cada mes</td>
+              <td>Un botón: 24 columnas por trabajador más la asistencia día a día</td>
+              <td>De horas a segundos</td>
+            </tr>
+            <tr>
+              <td><strong>Nómina bancaria</strong></td>
+              <td>Archivo aparte con macro, porque Nubox no la genera</td>
+              <td>Se genera con RUT, banco, cuenta y líquido; hoja separada de anticipos</td>
+              <td>Control de cuentas faltantes</td>
+            </tr>
+            <tr>
+              <td><strong>Asiento contable</strong></td>
+              <td>Se arma en el libro diario del archivo contable</td>
+              <td>Se genera desde el cierre de costos con vista previa; cuadra por construcción</td>
+              <td>Une gestión y tributario</td>
+            </tr>
+            <tr>
+              <td><strong>Estados financieros</strong></td>
+              <td>Fórmulas encadenadas; borrar una fila rompe el archivo</td>
+              <td>Mayor, Balance 8 columnas, EERR y Balance General se recalculan desde el diario</td>
+              <td>No hay fórmulas que romper</td>
+            </tr>
+            <tr>
+              <td><strong>Control de petróleo</strong></td>
+              <td>Planilla de inventario con prorrateo manual</td>
+              <td>Movimientos, control físico, prorrateo automático y hoja de conteo de 5 pasos</td>
+              <td>Detecta entregas sin registrar</td>
+            </tr>
+            <tr>
+              <td><strong>Medición del estanque</strong></td>
+              <td>Regla de tres en una hoja auxiliar</td>
+              <td>Calibración por estanque: se ingresan centímetros y entrega litros</td>
+              <td>Editable por estanque</td>
+            </tr>
+            <tr>
+              <td><strong>Stock de agroquímicos</strong></td>
+              <td>Hojas de stock por campo, conteo contra registros</td>
+              <td>Inventario con conteo físico y ajuste automático</td>
+              <td>El ajuste deja la diferencia en cero</td>
+            </tr>
+            <tr>
+              <td><strong>Registro de aplicaciones</strong></td>
+              <td>Formulario M2-008-F004 en papel, separado del stock</td>
+              <td>Formulario completo que <strong>descuenta el producto de bodega</strong> al registrarse</td>
+              <td>Por eso el stock nunca cuadraba</td>
+            </tr>
+            <tr>
+              <td><strong>Carencias</strong></td>
+              <td>Se sabe de memoria o se revisa la etiqueta</td>
+              <td>Cada aplicación bloquea el cuartel y muestra desde qué fecha se puede cosechar</td>
+              <td>Protege la certificación</td>
+            </tr>
+            <tr>
+              <td><strong>Entrega de EPP</strong></td>
+              <td>Registro manual que el jefe de campo no usa</td>
+              <td>Matriz por cargo, entrega firmada que descuenta stock, ficha por trabajador</td>
+              <td>Respaldo para la ACHS</td>
+            </tr>
+            <tr>
+              <td><strong>Charlas de seguridad</strong></td>
+              <td>No queda registro sistemático</td>
+              <td>Charla diaria con riesgos, medidas y asistentes</td>
+              <td>Responde a la evaluación ACHS</td>
+            </tr>
+            <tr>
+              <td><strong>Pack motivacional</strong></td>
+              <td>Aprobado, sin registros que lo alimenten</td>
+              <td>Semillas por asistencia, puntualidad, EPP y rendimiento; catálogo y canjes</td>
+              <td>La tarja genera los registros</td>
+            </tr>
+            <tr>
+              <td><strong>Quién hizo qué</strong></td>
+              <td>El archivo lo abre cualquiera</td>
+              <td>Cinco roles con permisos por módulo y bitácora exportable</td>
+              <td>Base del control documental</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══════════ 5 ══════════ -->
+    <section id="s5">
+      <h2><span class="num">05</span> Los trece módulos</h2>
+      <p class="lede">
+        Agrupados según cómo se usan: gestión, operación diaria, cumplimiento y maestros.
+      </p>
+
+      <h4>Gestión</h4>
+      <div class="grid2">
+        <div class="card">
+          <h5>Dashboard</h5>
+          <p>Costo por jornada, por hectárea, por labor y por especie. Alertas automáticas de
+          lo que requiere atención antes de cerrar el mes.</p>
+        </div>
+        <div class="card">
+          <h5>Costos y cierre</h5>
+          <p>Motor de distribución, libro de remuneraciones y generación del asiento con las
+          13 dimensiones. Permite ver el mismo peso desde cualquier ángulo.</p>
+        </div>
+        <div class="card">
+          <h5>Contabilidad</h5>
+          <p>Libro Diario, control de asientos, Libro Mayor, Balance de 8 columnas, Estado de
+          Resultados y Balance General. Todo se recalcula desde el diario.</p>
+        </div>
+        <div class="card">
+          <h5>Reportes</h5>
+          <p>Seis exportaciones a Excel en el formato que ya usan el contador, el banco y las
+          certificadoras. Importación del libro de remuneraciones de Nubox.</p>
+        </div>
+      </div>
+
+      <h4>Operación diaria</h4>
+      <div class="grid2">
+        <div class="card">
+          <h5>Tarja digital</h5>
+          <p>Grilla mensual con nueve tipos de día. Carga masiva para asignar una labor a una
+          cuadrilla completa en un rango de fechas.</p>
+        </div>
+        <div class="card">
+          <h5>Personal</h5>
+          <p>Ficha de trabajador con RUT validado, cargo enlazado a su cuenta contable, datos
+          bancarios y tallas para EPP.</p>
+        </div>
+        <div class="card">
+          <h5>Combustible</h5>
+          <p>Movimientos de estanque, hoja de conteo de 5 pasos, prorrateo de diferencias y
+          consumo por centro de costo, labor, vehículo y chofer.</p>
+        </div>
+        <div class="card">
+          <h5>Bodega e insumos</h5>
+          <p>Stock de 108 productos, conteo físico con ajuste, registro de aplicaciones
+          M2-008-F004 y control de carencias por cuartel.</p>
+        </div>
+        <div class="card">
+          <h5>Campos y cuarteles</h5>
+          <p>Base operativa: superficie, superficie productiva, especies, variedades, riego y
+          plantas por centro de costo y temporada.</p>
+        </div>
+      </div>
+
+      <h4>Cumplimiento</h4>
+      <div class="grid2">
+        <div class="card">
+          <h5>Prevención y EPP</h5>
+          <p>Matriz de EPP por cargo, entregas firmadas con descuento de stock, capacitaciones
+          con vencimiento y charlas diarias de seguridad.</p>
+        </div>
+        <div class="card">
+          <h5>Pack motivacional</h5>
+          <p>Ranking de semillas con puntualidad calculada desde las horas de llegada, catálogo
+          de premios y registro de canjes.</p>
+        </div>
+      </div>
+
+      <h4>Maestros y administración</h4>
+      <div class="grid2">
+        <div class="card">
+          <h5>Plan de cuentas</h5>
+          <p>Árbol navegable de los niveles N1 a N5 y constructor que arma el código completo
+          de 13 niveles con validación.</p>
+        </div>
+        <div class="card">
+          <h5>Usuarios y acceso</h5>
+          <p>Cinco roles con permisos por módulo, campos asignados, bloqueo por intentos
+          fallidos y bitácora de quién hizo qué.</p>
+        </div>
+      </div>
+
+      <h3>5.1 El plan de cuentas de 13 niveles</h3>
+      <p>
+        Implementado tal como está documentado. Desde el nivel N6 la cuenta deja de llenarse a
+        mano: la alimentan RRHH, insumos y operaciones. Cuando una dimensión no aplica, queda
+        en ceros.
+      </p>
+      <div class="verif">
+        <header>Estructura y ejemplo de código generado</header>
+        <ul>
+          <li><span class="lbl">N1 – N4 · Base contable clásica</span><span class="val">ACTIVO › CIRCULANTE › DISPONIBLE › CAJA</span></li>
+          <li><span class="lbl">N5 · Clasificación extra</span><span class="val">FERTILIZANTES · CONTRATISTA</span></li>
+          <li><span class="lbl">N6 – N7 · Labores agrícolas</span><span class="val">PODA › PINTAR CORTES</span></li>
+          <li><span class="lbl">N8 – N12 · Información productiva</span><span class="val">Etapa · Especie · Variedad · Campo · Temporada</span></li>
+          <li><span class="lbl">N13 · Centro de costo</span><span class="val">DZ23 · SANTINA24</span></li>
+          <li><span class="lbl">Código resultante</span><span class="val">4112 / 9-3-2-2-1 / 1-5-5</span></li>
+        </ul>
+      </div>
+
+      <h3>5.2 Las reglas de costeo, tal como están escritas</h3>
+      <ul class="lista">
+        <li><strong>Trabajador agrícola:</strong> sueldo base ÷ 30 × días del mes.</li>
+        <li><strong>Administrativo:</strong> sueldo base ÷ 30 × días trabajados, imputado a SUELDOS_ADM pero integrado al costo empresa.</li>
+        <li><strong>Con libro cargado:</strong> la base real pasa a ser total haber menos asignación familiar — el número que cuadra con contabilidad.</li>
+        <li><strong>Vacaciones:</strong> jornada válida, se redistribuye sobre lo efectivamente trabajado.</li>
+        <li><strong>Sin labor:</strong> no cuenta como jornada real, no diluye el costo.</li>
+        <li><strong>Fin de semana trabajado:</strong> jornada efectiva, sin excepción.</li>
+        <li><strong>Trato:</strong> convertido a equivalencia de jornada real, porque el trabajador sí asistió.</li>
+      </ul>
+    </section>
+
+    <!-- ══════════ 6 ══════════ -->
+    <section id="s6">
+      <h2><span class="num">06</span> Verificación contra los números reales</h2>
+      <p class="lede">
+        No basta con que compile. Cada motor se probó contra las cifras de las planillas de
+        la empresa, fuera de la aplicación.
+      </p>
+
+      <h3>6.1 Motor de costeo · Buin, julio 2026</h3>
+      <div class="verif">
+        <header>Distribución de mano de obra</header>
+        <ul>
+          <li><span class="lbl">Total distribuido</span><span class="val">$18.051.250</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Base esperada (total haber − asig. familiar)</span><span class="val">$18.051.250</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Desvío</span><span class="val">0 — cuadra al peso</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Líneas SIN_LABOR incluidas en el reparto</span><span class="val">0</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Líneas con las 13 dimensiones completas</span><span class="val">todas</span><span class="chk">✓</span></li>
+        </ul>
+      </div>
+
+      <h3>6.2 Contabilidad · ejercicio 2026, 9 asientos</h3>
+      <div class="verif">
+        <header>Partida doble y estados financieros</header>
+        <ul>
+          <li><span class="lbl">Asientos descuadrados</span><span class="val">0</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Σ Debe = Σ Haber</span><span class="val">$1.027.301.500</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Activo + Pérdidas = Pasivo + Ganancias</span><span class="val">$942.435.500</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Descuadre del Balance General</span><span class="val">0</span><span class="chk">✓</span></li>
+          <li><span class="lbl">EERR coincide con el Balance de 8 columnas</span><span class="val">sí</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Costo del motor = saldo de la cuenta 5.1</span><span class="val">$53.135.500</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Líneas de costo con N6 / N11 / N13</span><span class="val">931 de 931</span><span class="chk">✓</span></li>
+        </ul>
+      </div>
+      <p>
+        La última línea es la que importa: <strong>el mismo peso aparece en los dos mundos</strong>,
+        con las 13 dimensiones intactas dentro del asiento contable.
+      </p>
+
+      <h3>6.3 Combustible · estanque de Buin, 319 movimientos reales</h3>
+      <div class="verif">
+        <header>Contra los valores de la planilla</header>
+        <ul>
+          <li><span class="lbl">Stock estimado</span><span class="val">−1.840 L &nbsp;(planilla: −1840)</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Visible en el último control</span><span class="val">200 L &nbsp;(planilla: 200)</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Diferencia</span><span class="val">+2.040 L &nbsp;(planilla: 2040)</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Total entradas</span><span class="val">11.672 L</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Total salidas</span><span class="val">13.512 L</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Controles registrados</span><span class="val">27</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Calibración: 8,1 cm</span><span class="val">70,43 L &nbsp;(planilla: 70,43)</span><span class="chk">✓</span></li>
+        </ul>
+      </div>
+      <div class="verif">
+        <header>Prorrateo del control del 19-06-2024 · diferencia de −19 L</header>
+        <ul>
+          <li><span class="lbl">SANTINA24 · 46 L consumidos</span><span class="val">−9,6 L &nbsp;(planilla: −9,6)</span><span class="chk">✓</span></li>
+          <li><span class="lbl">GENERAL BU · 45 L consumidos</span><span class="val">−9,4 L &nbsp;(planilla: −9,4)</span><span class="chk">✓</span></li>
+        </ul>
+      </div>
+
+      <h3>6.4 Hoja de conteo · los 5 pasos</h3>
+      <div class="verif">
+        <header>Reproducción del ejemplo de la planilla</header>
+        <ul>
+          <li><span class="lbl">Paso 1 · saldo inicial 292 + compras 701</span><span class="val">993 L</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Paso 2 · suma de 7 entregas</span><span class="val">260 L</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Paso 3 · contador 267.363 − 267.103</span><span class="val">260 L — cuadra</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Paso 4 · saldo contable / visible</span><span class="val">733 L / 890 L</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Paso 5 · diferencia e interpretación</span><span class="val">−157 L → CALIBRAR</span><span class="chk">✓</span></li>
+        </ul>
+      </div>
+      <p>
+        El paso 3 es un control que la planilla de inventario no tenía: cruza el registro manual
+        contra el contador mecánico. Se probó quitando una entrega de 68 L y el sistema avisó
+        que faltaban registrar exactamente esos 68 litros.
+      </p>
+
+      <h3>6.5 Bodega y aplicaciones</h3>
+      <div class="verif">
+        <header>Controles del módulo</header>
+        <ul>
+          <li><span class="lbl">Productos con stock negativo</span><span class="val">0</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Aplicaciones con su salida de bodega</span><span class="val">todas</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Dosis/ha 2,5 × 8 ha</span><span class="val">20 unidades</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Dosis/100L 0,8 · 1200 L/ha · 5 ha</span><span class="val">48 unidades</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Carencia 14 días desde 01-08-2026</span><span class="val">cosechable 15-08-2026</span><span class="chk">✓</span></li>
+          <li><span class="lbl">Ajuste por conteo deja la diferencia en</span><span class="val">cero</span><span class="chk">✓</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══════════ 7 ══════════ -->
+    <section id="s7">
+      <h2><span class="num">07</span> Hallazgos sobre los datos reales</h2>
+      <p class="lede">
+        Al cargar la información verdadera aparecieron cosas que la planilla no muestra.
+        Son diagnósticos, no fallas del sistema.
+      </p>
+
+      <div class="aviso crit">
+        <p><span class="t">El estanque de Buin acumula un déficit de 1.840 litros</span>
+        Según los registros debería haber −1.840 L, es decir el sistema de registro dice que se
+        entregó más combustible del que entró. Físicamente hay 200 L. La diferencia acumulada
+        es de 2.040 litros, que a precio promedio equivalen a aproximadamente $1,5 millones sin
+        imputar a ningún centro de costo.</p>
+      </div>
+
+      <div class="aviso">
+        <p><span class="t">24 de 25 períodos requieren calibración</span>
+        Al correr la hoja de conteo sobre todo el historial, en 24 meses el resultado es
+        “hay más petróleo del que indica la máquina”. Es un patrón, no ruido: apunta a que el
+        estanque está sistemáticamente descalibrado. Corregir la calibración es más rentable
+        que seguir prorrateando diferencias.</p>
+      </div>
+
+      <div class="aviso">
+        <p><span class="t">Cuatro períodos con descuadre entre el contador y los registros</span>
+        En cuatro meses la suma de entregas anotadas no coincide con lo que marcó el contador
+        mecánico del estanque. Significa que hubo entregas sin registrar, y ningún prorrateo
+        posterior corrige eso.</p>
+      </div>
+
+      <div class="aviso">
+        <p><span class="t">65 de 108 productos no tienen ingrediente activo declarado</span>
+        Sin ese dato, el registro de aplicaciones queda incompleto ante una certificadora. El
+        sistema los marca en pantalla en vez de dejarlos pasar en silencio.</p>
+      </div>
+
+      <h3>7.1 Errores que se detectaron y corrigieron durante la construcción</h3>
+      <p>
+        Se documentan porque muestran el tipo de revisión aplicada, y porque algunos afectaban
+        números que parecían correctos.
+      </p>
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr><th>Hallazgo</th><th>Efecto</th><th>Estado</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Los códigos N6 y N7 se generaban por orden alfabético</td>
+              <td>El código de cuenta no coincidía con el del maestro. ADMINISTRACIÓN daba 1 en vez de 14</td>
+              <td><span class="pill p-ok">Corregido</span></td>
+            </tr>
+            <tr>
+              <td>La lista de labores de DESBROTE quedó con 56 ítems en vez de 7</td>
+              <td>Un error de lectura del bloque de Excel arrastró labores de otras categorías</td>
+              <td><span class="pill p-ok">Corregido</span></td>
+            </tr>
+            <tr>
+              <td>El Balance General descuadraba por $1.672.000</td>
+              <td>Los anticipos de sueldo, una cuenta de activo con saldo acreedor, no se restaban del activo</td>
+              <td><span class="pill p-ok">Corregido</span></td>
+            </tr>
+            <tr>
+              <td>El prorrateo cortaba por fecha y no por orden de registro</td>
+              <td>Un control y sus ajustes llevan la misma fecha; el estimado incluía movimientos posteriores</td>
+              <td><span class="pill p-ok">Corregido</span></td>
+            </tr>
+            <tr>
+              <td>El prorrateo contaba las calibraciones como consumo</td>
+              <td>Una calibración sale y vuelve; no es combustible usado. Por eso la hoja habla de salidas <em>netas</em></td>
+              <td><span class="pill p-ok">Corregido</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══════════ 8 ══════════ -->
+    <section id="s8">
+      <h2><span class="num">08</span> En qué ayuda concretamente</h2>
+      <p class="lede">
+        Ordenado por quién recibe el beneficio.
+      </p>
+
+      <h3>8.1 Para control interno y contabilidad</h3>
+      <ul class="lista">
+        <li><strong>Un solo cierre para los cuatro campos</strong> en vez de cuatro procesos paralelos que después hay que consolidar a mano.</li>
+        <li><strong>El asiento se genera solo</strong> desde el cierre de costos y cuadra por construcción: el líquido se calcula por diferencia.</li>
+        <li><strong>Advertencias antes de enviar al contador:</strong> trabajadores activos sin tarja, jornadas sin labor, liquidaciones faltantes.</li>
+        <li><strong>La revisión de liquidaciones se apoya en datos:</strong> la planilla de asistencia con días, faltas, atrasos y horas extra sale del mismo registro que alimenta el costo.</li>
+        <li><strong>Nómina bancaria con control</strong> de trabajadores sin datos de cuenta.</li>
+        <li><strong>No hay fórmulas que romper:</strong> borrar una fila no puede dañar los estados financieros.</li>
+      </ul>
+
+      <h3>8.2 Para gerencia</h3>
+      <ul class="lista">
+        <li><strong>Costo real por jornada</strong> — el dato que ya causó impacto cuando se presentó la tarja de Buin ajustada.</li>
+        <li><strong>Costo por hectárea y por centro de costo</strong>, comparable entre campos y entre especies.</li>
+        <li><strong>El mismo peso mirado desde ocho ángulos:</strong> labor, labor específica, especie, variedad, campo, cuenta, etapa de planta y centro de costo.</li>
+        <li><strong>Estado de Resultados de la empresa como unidad</strong>, no cuatro empresas separadas.</li>
+      </ul>
+
+      <h3>8.3 Para los administradores de campo</h3>
+      <ul class="lista">
+        <li><strong>Un formato único de tarja</strong>, con carga masiva por cuadrilla.</li>
+        <li><strong>Cada uno ve sólo su campo</strong>, sin riesgo de tocar lo ajeno.</li>
+        <li><strong>El petróleo deja de ser una discusión:</strong> el sistema muestra el consumo por vehículo, chofer y labor.</li>
+        <li><strong>Bodega con stock que cuadra</strong>, porque la aplicación descuenta el producto sola.</li>
+      </ul>
+
+      <h3>8.4 Para cumplimiento y certificación</h3>
+      <ul class="lista">
+        <li><strong>Registro de aplicaciones M2-008-F004</strong> completo, con ingrediente activo, dosis, mojamiento y carencia.</li>
+        <li><strong>Bloqueo de cuarteles en carencia:</strong> el sistema dice desde qué fecha se puede cosechar.</li>
+        <li><strong>Respaldo para la ACHS:</strong> charlas diarias con riesgos y asistentes, capacitaciones con vencimiento, EPP entregado y firmado.</li>
+        <li><strong>Bitácora de quién hizo qué</strong>, que es la base del control documental que exige ISO 9000.</li>
+      </ul>
+
+      <h3>8.5 Para los trabajadores</h3>
+      <ul class="lista">
+        <li><strong>El pack motivacional deja de ser una idea:</strong> la tarja genera los registros de asistencia, puntualidad y uso de EPP que lo alimentan.</li>
+        <li><strong>Ficha personal</strong> con capacitaciones realizadas e historial de EPP.</li>
+        <li><strong>El trato queda reflejado como asistencia real</strong>, lo que mejora el control de licencias y seguridad.</li>
+      </ul>
+    </section>
+
+    <!-- ══════════ 9 ══════════ -->
+    <section id="s9">
+      <h2><span class="num">09</span> Análisis FODA</h2>
+      <p class="lede">
+        Del proyecto de implementación, no del sistema como pieza de software.
+      </p>
+
+      <div class="foda">
+        <div class="foda-box f-int">
+          <header><h5>Fortalezas</h5><span class="pill p-ok">Interno · favorable</span></header>
+          <ol>
+            <li><b>El plan de cuentas de 13 niveles ya está diseñado</b> y documentado. No hubo que inventarlo: es un activo intelectual que muchas agrícolas no tienen.</li>
+            <li><b>Los maestros están completos y estructurados</b> — cuentas, cuarteles, especies, variedades, cargos, labores. La calidad del punto de partida fue determinante.</li>
+            <li><b>Existe una contraparte con visión de control interno</b> que ya cuadró junio 2026 manualmente. El método estaba probado antes de automatizarlo.</li>
+            <li><b>Hay historia real cargable:</b> 319 movimientos de combustible desde junio 2024 y conteos físicos de bodega.</li>
+            <li><b>El prototipo está construido y verificado</b>, no es una presentación de intenciones.</li>
+          </ol>
+        </div>
+
+        <div class="foda-box f-neg">
+          <header><h5>Debilidades</h5><span class="pill p-crit">Interno · adverso</span></header>
+          <ol>
+            <li><b>Sin servidor no hay sistema multiusuario.</b> Hoy los datos viven en un navegador: no hay respaldo ni trabajo simultáneo. Es la restricción que gobierna el plan.</li>
+            <li><b>Dependencia de una sola persona.</b> El conocimiento del método de costeo está concentrado; si esa persona falta, se detiene.</li>
+            <li><b>Datos maestros incompletos:</b> 65 productos sin ingrediente activo, carencias por cargar producto a producto, calibración medida sólo en Buin.</li>
+            <li><b>El mapeo de cuentas analíticas a financieras está parcialmente supuesto.</b> Sólo seis cruces provienen del asiento real; el resto es criterio a validar.</li>
+            <li><b>Cultura de registro débil en terreno:</b> el control de EPP existía y no se usaba.</li>
+          </ol>
+        </div>
+
+        <div class="foda-box f-ext">
+          <header><h5>Oportunidades</h5><span class="pill p-ocre">Externo · favorable</span></header>
+          <ol>
+            <li><b>Certificación ISO 9000 y de campos.</b> El control documental es justamente lo que falta y el sistema lo produce como subproducto.</li>
+            <li><b>Costo por hectárea confiable</b> habilita decisiones que hoy no se pueden tomar: qué variedad conviene, qué cuartel arrancar, qué labor tercerizar.</li>
+            <li><b>Informes a clientes, certificadoras, SAG y ACHS</b> salen del mismo registro, sin preparar cada uno por separado.</li>
+            <li><b>Posición negociadora:</b> una agrícola que muestra trazabilidad completa accede a clientes que hoy la exigen.</li>
+            <li><b>Corregir la calibración del estanque</b> tiene retorno inmediato y medible.</li>
+          </ol>
+        </div>
+
+        <div class="foda-box f-neg2">
+          <header><h5>Amenazas</h5><span class="pill p-avi">Externo · adverso</span></header>
+          <ol>
+            <li><b>Resistencia del contador externo.</b> El sistema le cambia el flujo de trabajo; si no coopera con el formato de exportación, se duplica el esfuerzo.</li>
+            <li><b>Adopción en terreno.</b> Si los jefes de campo no registran la tarja diaria, el sistema queda vacío y la carga vuelve a la oficina.</li>
+            <li><b>Conectividad en los campos.</b> Hay que verificar señal antes de comprometer un modelo en línea.</li>
+            <li><b>Pérdida de datos mientras no haya respaldo.</b> Un navegador borrado hoy significa empezar de cero.</li>
+            <li><b>Estacionalidad:</b> intentar implantar durante cosecha compite con el momento de mayor carga operativa.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="aviso">
+        <p><span class="t">Lectura cruzada</span>
+        La combinación más peligrosa es <strong>debilidad 1 con amenaza 4</strong>: sin servidor y
+        sin respaldo, cualquier avance es frágil. La más aprovechable es <strong>fortaleza 1 con
+        oportunidad 1</strong>: el plan de cuentas ya diseñado es exactamente la estructura que
+        una certificación exige documentar.</p>
+      </div>
+    </section>
+
+    <!-- ══════════ 10 ══════════ -->
+    <section id="s10">
+      <h2><span class="num">10</span> Carta Gantt de implementación</h2>
+      <p class="lede">
+        Seis meses, siete fases. Las semanas son estimaciones de trabajo, no compromisos
+        contractuales: dependen de la disponibilidad de la contraparte para validar.
+      </p>
+
+      <div class="gantt-wrap">
+        <div class="gantt">
+          <div class="gantt-head">
+            <div class="lbl">Fase</div>
+            <div class="m" style="grid-column: 2 / span 4">Mes 1</div>
+            <div class="m" style="grid-column: 6 / span 4">Mes 2</div>
+            <div class="m" style="grid-column: 10 / span 4">Mes 3</div>
+            <div class="m" style="grid-column: 14 / span 4">Mes 4</div>
+            <div class="m" style="grid-column: 18 / span 4">Mes 5</div>
+            <div class="m" style="grid-column: 22 / span 3">Mes 6</div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="lbl"><b>1 · Validación de maestros</b><span>Cuentas, carencias, calibración, mapeo</span></div>
+            <div class="bar b-verde" style="grid-column: 2 / span 3">S1–S3</div>
+            <div class="gantt-cell" style="grid-column: 5 / span 20"></div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="lbl"><b>2 · Servidor y respaldo</b><span>Backend, multiusuario, respaldo automático</span></div>
+            <div class="gantt-cell" style="grid-column: 2 / span 1"></div>
+            <div class="bar b-crit" style="grid-column: 3 / span 7">S2–S8 · crítica</div>
+            <div class="gantt-cell" style="grid-column: 10 / span 15"></div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="lbl"><b>3 · Piloto en Buin</b><span>Tarja y combustible en operación real</span></div>
+            <div class="gantt-cell" style="grid-column: 2 / span 5"></div>
+            <div class="bar b-verde" style="grid-column: 7 / span 7">S6–S12</div>
+            <div class="gantt-cell" style="grid-column: 14 / span 11"></div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="lbl"><b>4 · Cierre paralelo</b><span>Un mes en Excel y en sistema a la vez</span></div>
+            <div class="gantt-cell" style="grid-column: 2 / span 9"></div>
+            <div class="bar b-ocre" style="grid-column: 11 / span 7">S10–S16</div>
+            <div class="gantt-cell" style="grid-column: 18 / span 7"></div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="lbl"><b>5 · Despliegue 4 campos</b><span>Capacitación y carga de dotación</span></div>
+            <div class="gantt-cell" style="grid-column: 2 / span 13"></div>
+            <div class="bar b-verde" style="grid-column: 15 / span 7">S14–S20</div>
+            <div class="gantt-cell" style="grid-column: 22 / span 3"></div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="lbl"><b>6 · Contabilidad en producción</b><span>Libro diario y estados financieros</span></div>
+            <div class="gantt-cell" style="grid-column: 2 / span 17"></div>
+            <div class="bar b-ocre" style="grid-column: 19 / span 5">S18–S22</div>
+            <div class="gantt-cell" style="grid-column: 24 / span 1"></div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="lbl"><b>7 · Preparación ISO 9000</b><span>Control documental y auditoría interna</span></div>
+            <div class="gantt-cell" style="grid-column: 2 / span 19"></div>
+            <div class="bar b-verde" style="grid-column: 21 / span 4">S20–S24</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gantt-leyenda">
+        <span><i class="sw" style="background:var(--verde)"></i> Construcción y despliegue</span>
+        <span><i class="sw" style="background:var(--ocre)"></i> Validación con datos reales</span>
+        <span><i class="sw" style="background:var(--critico)"></i> Ruta crítica</span>
+      </div>
+
+      <h3>10.1 Qué contiene cada fase</h3>
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr><th>Fase</th><th>Entregable</th><th>Quién debe participar</th><th>Hito de cierre</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1 · Validación de maestros</strong></td>
+              <td>Mapeo de cuentas confirmado, carencias cargadas por producto, calibración medida en los cuatro estanques</td>
+              <td>Contabilidad y jefes de campo</td>
+              <td>Maestros firmados</td>
+            </tr>
+            <tr>
+              <td><strong>2 · Servidor y respaldo</strong></td>
+              <td>Base de datos, acceso multiusuario, respaldo automático diario, permisos validados en el servidor</td>
+              <td>Desarrollo</td>
+              <td>Dos personas trabajando a la vez</td>
+            </tr>
+            <tr>
+              <td><strong>3 · Piloto en Buin</strong></td>
+              <td>Tarja y combustible registrados en terreno durante un mes completo</td>
+              <td>Administrador y jefe de campo de Buin</td>
+              <td>Un mes sin volver al Excel</td>
+            </tr>
+            <tr>
+              <td><strong>4 · Cierre paralelo</strong></td>
+              <td>Un cierre mensual hecho en ambos sistemas, comparando resultado</td>
+              <td>Contabilidad</td>
+              <td>Diferencia explicada y aceptada</td>
+            </tr>
+            <tr>
+              <td><strong>5 · Despliegue</strong></td>
+              <td>Dotación cargada y capacitación en los cuatro campos</td>
+              <td>Todos los campos</td>
+              <td>Cuatro campos registrando</td>
+            </tr>
+            <tr>
+              <td><strong>6 · Contabilidad en producción</strong></td>
+              <td>Libro diario del ejercicio y estados financieros emitidos desde el sistema</td>
+              <td>Contabilidad y contador externo</td>
+              <td>Estados financieros aceptados</td>
+            </tr>
+            <tr>
+              <td><strong>7 · Preparación ISO</strong></td>
+              <td>Control de versiones documental, registro de no conformidades, auditoría interna</td>
+              <td>Gerencia y control interno</td>
+              <td>Primera auditoría interna</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="aviso">
+        <p><span class="t">Sobre el calendario</span>
+        Conviene que la fase 5 no caiga en cosecha. Si el despliegue coincide con el peak de
+        actividad, el registro diario se abandona y el sistema queda vacío. Ajustar el inicio
+        según el calendario agrícola es más importante que empezar pronto.</p>
+      </div>
+    </section>
+
+    <!-- ══════════ 11 ══════════ -->
+    <section id="s11">
+      <h2><span class="num">11</span> Riesgos y supuestos declarados</h2>
+      <p class="lede">
+        Lo que se asumió al construir y debe confirmarse antes de operar. Se declara
+        explícitamente para que nadie lo descubra después.
+      </p>
+
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr><th>Supuesto</th><th>De dónde viene</th><th>Cómo se confirma</th><th>Riesgo si falla</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>El mapeo de cuentas analíticas a financieras</td>
+              <td>Seis cruces del asiento real de junio 2026; el resto por criterio contable</td>
+              <td>Revisión de la contadora sobre la tabla de mapeo</td>
+              <td><span class="pill p-avi">Medio</span> — el EERR clasificaría mal ciertos gastos</td>
+            </tr>
+            <tr>
+              <td>Calibración de Graneros, Los Lirios y Chumaco</td>
+              <td>Se replicó la de Buin: 11,5 cm equivalen a 100 litros</td>
+              <td>Medir físicamente cada estanque</td>
+              <td><span class="pill p-crit">Alto</span> — diferencias sistemáticas en tres campos</td>
+            </tr>
+            <tr>
+              <td>Carencias por categoría de producto</td>
+              <td>Valores conservadores de referencia, no de etiqueta</td>
+              <td>Cargar la carencia real producto por producto</td>
+              <td><span class="pill p-crit">Alto</span> — riesgo de cosechar antes de tiempo</td>
+            </tr>
+            <tr>
+              <td>Desglose del haber en el asiento de sueldos</td>
+              <td>2% de impuesto único, el resto leyes sociales</td>
+              <td>Comparar contra una liquidación real</td>
+              <td><span class="pill p-avi">Medio</span> — afecta la clasificación, no el total</td>
+            </tr>
+            <tr>
+              <td>La temporada agrícola parte en mayo</td>
+              <td>No estaba escrito en ningún archivo</td>
+              <td>Confirmar con gerencia</td>
+              <td><span class="pill p-gris">Bajo</span> — se corrige en un parámetro</td>
+            </tr>
+            <tr>
+              <td>Precios de referencia de insumos y EPP</td>
+              <td>Estimados por categoría</td>
+              <td>Cargar precios reales de compra</td>
+              <td><span class="pill p-avi">Medio</span> — la valorización del consumo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>11.1 Sobre el control de acceso</h3>
+      <div class="aviso crit">
+        <p><span class="t">El login organiza el trabajo, no protege los datos</span>
+        Mientras el sistema corra sólo en el navegador, cualquiera con conocimientos básicos
+        puede leer o alterar la información sin pasar por la pantalla de acceso. Las contraseñas
+        se guardan con hash y sal, nunca en texto plano, pero eso sólo evita que se lean de un
+        vistazo.</p>
+        <p>Sirve igualmente para que cada persona vea sólo lo suyo, para dejar registro de quién
+        hizo qué y para tener el modelo listo. <strong>La seguridad real llega con la fase 2</strong>,
+        donde estas mismas reglas se validan en el servidor.</p>
+      </div>
+
+      <h3>11.2 Datos de demostración</h3>
+      <p>
+        Los <strong>maestros son reales</strong>: plan de cuentas, cuarteles, cargos, especies,
+        variedades, productos de bodega y los 319 movimientos del estanque de Buin. Los
+        <strong>movimientos de personal, tarja y remuneraciones son simulados</strong> para poder
+        evaluar el sistema de inmediato. Existe una opción que los borra y deja los maestros
+        listos para cargar datos productivos.
+      </p>
+    </section>
+
+    <!-- ══════════ 12 ══════════ -->
+    <section id="s12">
+      <h2><span class="num">12</span> Decisiones que corresponden a la empresa</h2>
+      <p class="lede">
+        No son tareas técnicas: son definiciones que condicionan el resto del proyecto.
+      </p>
+
+      <div class="grid2">
+        <div class="card">
+          <h5>1 · ¿Se invierte en servidor?</h5>
+          <p>Es la decisión que gobierna todo. Sin ella el sistema no es multiusuario ni tiene
+          respaldo, y cada avance queda expuesto. Define si el proyecto avanza o queda como
+          herramienta de una sola persona.</p>
+        </div>
+        <div class="card">
+          <h5>2 · ¿El contador externo participa?</h5>
+          <p>El sistema exporta en el formato que él ya usa, pero conviene acordar con él el
+          traspaso. Si coopera, se elimina doble digitación; si no, el sistema igual funciona
+          pero con menos beneficio.</p>
+        </div>
+        <div class="card">
+          <h5>3 · ¿Quién registra la tarja en terreno?</h5>
+          <p>El sistema supone que el jefe de campo registra a diario. Si eso no ocurre, la
+          carga vuelve a la oficina y se pierde la mitad del valor. Hay que definir responsable
+          y horario.</p>
+        </div>
+        <div class="card">
+          <h5>4 · ¿Cuándo se parte?</h5>
+          <p>El despliegue no debiera coincidir con cosecha. Conviene fijar la fecha de inicio
+          en función del calendario agrícola de los cuatro campos.</p>
+        </div>
+        <div class="card">
+          <h5>5 · ¿Se miden los estanques?</h5>
+          <p>La calibración de tres de los cuatro campos es un supuesto. Medirlos es barato y
+          evita arrastrar diferencias como las que hoy tiene Buin.</p>
+        </div>
+        <div class="card">
+          <h5>6 · ¿Se completan los ingredientes activos?</h5>
+          <p>65 productos sin ese dato. Es trabajo de digitación desde las etiquetas, y sin él
+          el registro de aplicaciones no sirve ante una certificadora.</p>
+        </div>
+      </div>
+
+      <h3>12.1 Recomendación</h3>
+      <p>
+        Partir por las fases 1 y 2 en paralelo. Mientras el desarrollo levanta el servidor, la
+        contraparte valida maestros, mide estanques y completa ingredientes activos. Son seis
+        semanas de trabajo que no compiten entre sí y que dejan el sistema listo para un piloto
+        real en Buin.
+      </p>
+      <p>
+        El piloto debe durar <strong>un mes completo sin volver al Excel</strong>. Es la única
+        forma de saber si el registro diario se sostiene en terreno, que es el supuesto del que
+        depende todo lo demás.
+      </p>
+    </section>
+
+    <footer class="cierre">
+      <p>
+        SIGA · Sistema Integrado de Gestión Agrícola — Agrícola El Bosque Ltda.<br>
+        Informe preparado sobre los siete archivos entregados por la empresa. Las cifras de
+        verificación provienen de pruebas ejecutadas sobre los datos reales de las planillas;
+        los supuestos declarados en la sección 11 están pendientes de confirmación.
+      </p>
+    </footer>
+
+  </main>
+</div>
